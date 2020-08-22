@@ -1,0 +1,49 @@
+/* miniprogram/pages/index/index.wxss */
+/* 去除跳转完后的回首页标签 */
+.container{
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.guide-text{
+    text-align: center;
+}
+
+.guide-text text{
+    font-size: 40rpx;
+}
+
+.identity-wrap{
+    width: 100%;
+    height: 350rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.actor-wrap{
+    width: 200rpx;
+    height: 300rpx;
+    text-align: center;
+}
+
+.actor-wrap:hover{
+    box-shadow: 0px 0px 10px gray;
+}
+
+.actorImg{
+    width: 140rpx;
+    height: 140rpx;
+    margin: 40rpx 30rpx 40rpx 30rpx ;
+    display: block;
+}
+
+.actorName{
+    color: gray;
+}

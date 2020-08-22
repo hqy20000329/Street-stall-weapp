@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index"
+  },
+  "navigationBarTitleText":"选择身份",
+  "navigationBarBackgroundColor":"#ffffff"
+}
