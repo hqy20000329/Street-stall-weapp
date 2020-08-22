@@ -29,10 +29,11 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wx0e11bd58b4fc0152",
-	"projectname": "stallApp",
+	"projectname": "Street-stall-weapp",
 	"libVersion": "2.8.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

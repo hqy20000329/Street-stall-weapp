@@ -15,14 +15,8 @@ App({
         traceUser: true,
       });
     }
-    getUserLocation((res)=>{
+    getUserLocation((res) => {
       console.log(res);
     });
-    wx.cloud.callFunction({
-      name:'login',
-      success(res){
-        console.log(res.result.data);
-      }
-    })
   },
 });
