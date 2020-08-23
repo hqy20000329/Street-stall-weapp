@@ -9,11 +9,11 @@ cloud.init({
 const db = cloud.database({env})
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  return await db.collection("stall_visit").add({
-    data:{
-      visitId:wxContext.OPENID
-    }
-  })
+  // return await db.collection("stall_visit").add({
+  //   data:{
+  //     visitId:wxContext.OPENID
+  //   }
+  // })
   // console.log(event)
   // console.log(context)
 

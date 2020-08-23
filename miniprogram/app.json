@@ -2,13 +2,15 @@
   "pages": [
     "pages/index/index",
     "pages/vistor/vistor",
-    "pages/merchant/merchant"
+    "pages/merchant/merchant",
+    "pages/visitor-user/visitor-user",
+    "pages/visitor-index/visitor-index",
+    "pages/visitor-active/visitor-active"
   ],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-
   },
   "window": {
     "backgroundColor": "#F6F6F6",

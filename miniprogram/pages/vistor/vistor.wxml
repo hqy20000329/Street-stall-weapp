@@ -1,2 +1,7 @@
 <!--miniprogram/pages/vistor/vistor.wxml-->
-<text>miniprogram/pages/vistor/vistor.wxml</text>
+<text>1</text>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">{{pageList[0].text}}</van-tabbar-item>
+  <van-tabbar-item icon="search">{{pageList[1].text}}</van-tabbar-item>
+  <van-tabbar-item icon="friends-o">{{pageList[2].text}}</van-tabbar-item>
+</van-tabbar>

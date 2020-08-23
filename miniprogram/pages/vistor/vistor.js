@@ -1,66 +1,31 @@
 // miniprogram/pages/vistor/vistor.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    active: 0,
+    pageList: [
+      {
+        text: '首页',
+        url: '../visitor-index/visitor-index'
+      },
+      {
+        text: '活动',
+        url: '../visitor-active/visitor-active'
+      },
+      {
+        text: '我的',
+        url: '../visitor-user/visitor-user'
+      }
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onChange(event) {
+    // event.detail 的值为当前选中项的索引
+    this.setData({ active: event.detail });
+    wx.showToast({
+      title: `点击标签 ${event.detail + 1}`,
+      icon: 'none',
+    });
+    wx.navigateTo({
+      url: this.data.pageList[event.detail].url
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+});
