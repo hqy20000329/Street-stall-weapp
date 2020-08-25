@@ -1,0 +1,14 @@
+<!-- 自定义顶部栏 -->
+<view class="nav-bar" style="height:{{navBarHeight}}px;">
+    <view class="container" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px;left:0; right:{{menuRight }}px; bottom:{{menuButton}}px;">
+        <view class="city triangle">
+            {{city}}
+        </view>
+        <view class="search">
+            <van-icon name="search" />
+            <input class="input" placeholder="输入店铺名"></input>
+        </view>
+    </view>
+</view>
+<!-- 占位区域 -->
+<view class="content" style="margin-top:{{navBarHeight}}px;"></view>

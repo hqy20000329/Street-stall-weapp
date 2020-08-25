@@ -1,7 +1,10 @@
 <!-- miniprogram/pages/vistor/vistor.wxml -->
 
-<!-- page页面组件 -->
+<!-- navBar 头部区域-->
+<visitor-navbar-home></visitor-navbar-home>
 
+page页面组件
+<view >11</view>
 
 <!-- 底部tabBar -->
 <van-tabbar active="{{ active }}" bind:change="onChange" active-color="#1296db" inactive-color="#000">

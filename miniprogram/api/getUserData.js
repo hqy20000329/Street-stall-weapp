@@ -1,21 +1,6 @@
 /**
- * @param {function} success  获取用户信息成功的回调
- * @param {function} fail     获取用户信息失败的回调
- * @param {function} complete 获取用户信息完成后的回调
+ * 获取用户信息
  */
-// const getUserInfo = () => {
-//   wx.getUserInfo({
-//     withCredentials: "false",
-//     lang: "zh_CN",
-//     timeout: 10000,
-//     success,
-//     fail: () => {
-//       console.log("用户未授权获取用户信息");
-//       fail(); //用户传入的fail
-//     },
-//     complete,
-//   });
-// };
 const getUserInfo = async () => {
   return await new Promise((resolve, reject) => {
     wx.getUserInfo({
