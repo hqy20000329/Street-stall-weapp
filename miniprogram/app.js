@@ -1,6 +1,6 @@
 //app.js
 const { getUserLocation } = require("./api/getUserData");
-const { translate } = require("./api/txMapApi");
+const { translate , geocoder } = require("./api/txMapApi");
 App({
   onLaunch: function () {
     if (!wx.cloud) {
@@ -13,15 +13,19 @@ App({
     }
     this.globalData = {};
 
-    getUserLocation().then((value) => {
-      console.log(value);
-    });
-    translate(
-      [{ latitude: 28.717235565185547, longitude: 115.82322692871094 }],
-      1
-    ).then((res) => {
-      console.log(res);
-    });
+    // getUserLocation().then((res) => {
+    //   console.log(res);
+    //   geocoder({longitude:res.longitude,latitude:res.latitude})
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    // })
+    // translate(
+    //   [{ latitude: 28.717235565185547, longitude: 115.82322692871094 }],
+    //   1
+    // ).then((res) => {
+    //   console.log(res);
+    // });
     const systemInfo = wx.getSystemInfoSync();
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     console.log(systemInfo);

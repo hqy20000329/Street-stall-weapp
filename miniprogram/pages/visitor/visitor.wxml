@@ -1,7 +1,7 @@
 <!-- miniprogram/pages/vistor/vistor.wxml -->
 
 <!-- navBar 头部区域-->
-<visitor-navbar-home></visitor-navbar-home>
+<visitor-navbar-home city="{{localCity}}"></visitor-navbar-home>
 
 page页面组件
 <view >11</view>

@@ -13,7 +13,7 @@
 }
 
 .nav-bar .search {
-    flex: 0.8;
+    flex: 0.9;
     color: #333;
     font-size: 14px;
     background: #fff;
@@ -23,11 +23,11 @@
     padding-right: 12px;
     display: flex;
     align-items: center;
-    margin-right: 5vw;
+    margin-right: 4vw;
 }
 
 .nav-bar .city{
-    max-width: 15vw;
+    max-width: 20vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
