@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "visitor-navbar-home" : "../../components/visitor-navbar-home/visitor-navbar-home"
+    "visitor-navbar-home" : "../../components/visitor-navbar-home/index",
+    "my-swiper" : "../../components/my-swiper/index"
   },
   "navigationStyle": "custom",
   "disableScroll": true

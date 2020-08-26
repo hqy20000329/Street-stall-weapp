@@ -1,0 +1,15 @@
+<view class="wrap">
+  <swiper bindchange="swiperChange" class="swiper-container" indicatorDots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" easing-function="linear">
+    <block wx:for="{{backgroundList}}" wx:key="*this">
+      <swiper-item class="swiper-item">
+        <image src="{{item}}" mode="scaleToFill"></image>        
+      </swiper-item>
+    </block>
+    
+  </swiper>
+  <view class="swiper-dot-container">
+      <block wx:for="{{backgroundList}}" wx:key="index">
+          <view class="swiper-dot {{index == isActive ? 'swiper-dot-active' : ''}}" ></view>
+      </block>
+  </view>
+</view>
