@@ -3,7 +3,8 @@
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "visitor-navbar-home" : "../../components/visitor-navbar-home/index",
-    "my-swiper" : "../../components/my-swiper/index"
+    "my-swiper" : "../../components/my-swiper/index",
+    "visitor-item-list": "../../components/visitor-item-list/index"
   },
   "navigationStyle": "custom",
   "disableScroll": true

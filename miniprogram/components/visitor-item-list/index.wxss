@@ -1,0 +1,12 @@
+/* components/visitor-item-list/index.wxss */
+.item-container{
+    width: 100%;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.goods_item{
+    flex-basis: 20%;
+    text-align: center;
+}

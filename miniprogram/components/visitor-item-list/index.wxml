@@ -1,0 +1,6 @@
+<!-- components/visitor-item-list/index.wxml 游客页摊位项目 -->
+<view class="item-container">
+    <van-grid column-num="{{columnNum}}" border="{{false}}" icon-size="{{iconSize}}px">
+        <van-grid-item icon="{{item.img}}" text="{{item.text}}" wx:for="{{ itemList }}" wx:key="*this"/>
+    </van-grid>
+</view>

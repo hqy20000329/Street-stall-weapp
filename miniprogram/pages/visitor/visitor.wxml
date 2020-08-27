@@ -3,8 +3,12 @@
 <visitor-navbar-home city="{{localCity}}"></visitor-navbar-home>
 
 <!-- page页面组件 -->
+<!-- 轮播图组件 -->
 <my-swiper></my-swiper>
-<view>111</view>
+
+<!-- 摊位种类菜单 -->
+<visitor-item-list></visitor-item-list>
+
 <!-- 底部tabBar -->
 <van-tabbar active="{{ active }}" bind:change="onChange" active-color="#1296db" inactive-color="#000">
   <van-tabbar-item>
