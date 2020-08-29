@@ -6,19 +6,12 @@
   <view class="home-page">
     <scroll-view style="height:100%" scroll-y="true" enable-back-to-top="true">
       <!-- 轮播图组件 -->
-      <my-swiper></my-swiper>
+      <my-swiper backgroundList="{{swiperList}}"></my-swiper>
       <!-- 摊位种类菜单 -->
       <visitor-item-list></visitor-item-list>
       <!-- 摊位卡片 -->
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <visitor-stall-list></visitor-stall-list>
-      <!-- <view style="height:50px;width:100%;background-color:red;">4564464</view> -->
+      <visitor-stall-list stallList="{{stalls}}"></visitor-stall-list>
+      <!-- <view style="height:50px;width:100%;background-color:red;">底部区域</view> -->
     </scroll-view>
   </view>
 </view>
