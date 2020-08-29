@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "visitor-navbar-home" : "../../components/visitor-navbar-home/index",
+    "my-swiper" : "../../components/my-swiper/index",
+    "visitor-item-list" : "../../components/visitor-item-list/index",
+    "visitor-stall-list" : "../../components/visitor-stall-list/index"
+  }
+}

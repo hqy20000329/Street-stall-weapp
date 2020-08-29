@@ -1,13 +1,25 @@
 <!-- miniprogram/pages/vistor/vistor.wxml -->
-<!-- navBar 头部区域 -->
-<visitor-navbar-home city="{{localCity}}"></visitor-navbar-home>
 
-<!-- page页面组件 -->
-<!-- 轮播图组件 -->
-<my-swiper></my-swiper>
+<!-- 游客首页 -->
+<block wx:if="{{drawHomePage}}">
+  <view class="pageWrap" hidden="{{active !== 0}}">
+    <visitor-homePage homePageCity="{{localCity}}" hidden="true"></visitor-homePage>
+  </view>
+</block>
 
-<!-- 摊位种类菜单 -->
-<visitor-item-list></visitor-item-list>
+<!-- 游客活动页 -->
+<block wx:if="{{drawActivityPage}}">
+  <view class="pageWrap" hidden="{{active !== 1}}">
+    <visitor-activityPage></visitor-activityPage>
+  </view>
+</block>
+
+<!-- 游客我的页 -->
+<block wx:if="{{drawMinePage}}">
+  <view class="pageWrap" hidden="{{active !== 2}}">
+    <visitor-activityPage></visitor-activityPage>
+  </view>
+</block>
 
 <!-- 底部tabBar -->
 <van-tabbar active="{{ active }}" bind:change="onChange" active-color="#1296db" inactive-color="#000">

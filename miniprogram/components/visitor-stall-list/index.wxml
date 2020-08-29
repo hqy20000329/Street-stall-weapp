@@ -1,0 +1,33 @@
+<van-card tag="{{stallList[0].tag}}" thumb="{{stallList[0].coverImg}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}">
+    <view slot="title">
+        <view class="row-style">
+            <view class="stall-title">{{stallList[0].title}}</view>
+        </view>
+    </view>
+    <view slot="desc">
+        <view class="row-style">
+            <view class="stall-desc">
+                <text class="stall-score">{{stallList[0].score}}分</text>
+                <text class="stall-visitor">浏览{{stallList[0].visited}}</text>
+            </view>
+            <view class="stall-label">{{stallList[0].label}}</view>
+        </view>
+    </view>
+    <view slot="price-top">
+        <view class="row-style">
+            <view class="stall-open-time">
+                营业时间: {{stallList[0].startTime}} - {{stallList[0].endTime}}
+            </view>
+            <view class="stall-distance">{{stallList[0].distance}}m</view>
+        </view>
+    </view>
+    <view slot="bottom">
+        <view class="row-style">
+            <view>{{stallList[0].localCity}} {{stallList[0].businessArea}}</view>
+            <view class="stall-special-offer">
+                <van-tag class="tag-padding" plain type="danger">{{stallList[0].promotionNum}}个优惠</van-tag>
+                <van-tag class="tag-padding" plain type="danger">{{stallList[0].activityNum}}个活动</van-tag>
+            </view>
+        </view>
+    </view>
+</van-card>

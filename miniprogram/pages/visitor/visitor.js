@@ -8,6 +8,13 @@ Page({
   data: {
     // 当前选中页面
     active: 0,
+    
+    // 性能优化，各个页面是否渲染
+    drawHomePage:true,
+    drawActivityPage:false,
+    drawMinePage:false,
+
+
     localCity: "南昌",
     // 图标src
     icon: {
@@ -31,26 +38,49 @@ Page({
    */
   onChange(event) {
     // event.detail 的值为当前选中项的索引
+
     this.setData({ active: event.detail });
+    this.changeDrawPage(this.data.active);
   },
+
+  /**
+   * 更改页面渲染
+   */
+  changeDrawPage(pageNum){
+    if(pageNum === 0){
+      if(!this.data.drawHomePage){
+        this.setData({drawHomePage:true})
+      }
+    }else if(pageNum === 1){
+      if(!this.data.drawActivityPage){
+        this.setData({drawActivityPage:true})
+      }
+    }else if(pageNum === 2){
+      if(!this.data.drawMinePage){
+        this.setData({drawMinePage:true})
+      }
+    }
+  },
+
 
   /**
    * 显示用户首页左上角位置
    */
-  getLocation(){
+  getLocation() {
     const self = this;
     getUserLocation().then((res) => {
       console.log(res);
-      geocoder({longitude:res.longitude,latitude:res.latitude},1)
-      .then(res => {
-        console.log(res);
-        const localData = res.data.result 
-        console.log(localData);
-        self.setData({
-          localCity:localData.ad_info.district || localData.ad_info.city
-        })
-      })
-    })
+      geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
+        (res) => {
+          console.log(res);
+          const localData = res.data.result;
+          console.log(localData);
+          self.setData({
+            localCity: localData.ad_info.district || localData.ad_info.city,
+          });
+        }
+      );
+    });
   },
 
   /**
@@ -60,23 +90,22 @@ Page({
     const self = this;
 
     wx.getSetting({
-      success: (res)=>{
-        if(!res.authSetting['scope.userLocation']){
+      success: (res) => {
+        if (!res.authSetting["scope.userLocation"]) {
           wx.authorize({
-            scope: 'scope.userLocation',
-            success () {
-              self.getLocation()
-            }
-          })
-        }else{
-          self.getLocation()
+            scope: "scope.userLocation",
+            success() {
+              self.getLocation();
+            },
+          });
+        } else {
+          self.getLocation();
         }
       },
-      fail: ()=>{ console.log("用户未授权"); }
+      fail: () => {
+        console.log("用户未授权");
+      },
     });
-
-
-    
   },
 
   /**

@@ -1,0 +1,39 @@
+
+.row-style{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stall-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.stall-desc{
+    padding: 6rpx 0rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+
+.stall-score{
+    color: tomato;
+    font-weight: bolder;
+    margin-right: 10rpx;
+}
+
+.stall-visitor{
+    color: gray;
+}
+
+.stall-open-time{
+    padding: 6rpx 0rpx;
+    box-sizing: border-box;
+}
+
+.stall-special-offer van-tag{
+    padding-left: 6rpx;
+}

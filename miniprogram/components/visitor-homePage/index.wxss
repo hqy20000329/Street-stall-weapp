@@ -1,0 +1,8 @@
+/* components/visitor-homePage/index.wxss */
+.container{
+    height: 100%;
+}
+
+.home-page {
+    height: 100%;
+}
