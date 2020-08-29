@@ -1,6 +1,7 @@
 // miniprogram/pages/vistor/vistor.js
 const { getUserLocation } = require("../../api/getUserData");
 const { translate, geocoder } = require("../../api/txMapApi");
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -31,6 +32,8 @@ Page({
         active: "../../images/icon/visitor-user-active.png",
       },
     },
+
+    navBarHeight: app.globalData.navBarHeight,
   },
 
   /**

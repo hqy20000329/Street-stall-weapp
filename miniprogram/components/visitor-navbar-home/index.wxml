@@ -11,4 +11,4 @@
     </view>
 </view>
 <!-- 占位区域 -->
-<view class="content" style="height:{{navBarHeight}}px;"></view>
+<!-- <view class="content" style="height:{{navBarHeight}}px;"></view> -->

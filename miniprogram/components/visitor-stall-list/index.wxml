@@ -25,8 +25,8 @@
         <view class="row-style">
             <view>{{stallList[0].localCity}} {{stallList[0].businessArea}}</view>
             <view class="stall-special-offer">
-                <van-tag class="tag-padding" plain type="danger">{{stallList[0].promotionNum}}个优惠</van-tag>
-                <van-tag class="tag-padding" plain type="danger">{{stallList[0].activityNum}}个活动</van-tag>
+                <van-tag class="tag-padding" plain type="danger">{{stallList[0].promotionNum}}优惠</van-tag>
+                <van-tag class="tag-padding" plain type="danger">{{stallList[0].activityNum}}活动</van-tag>
             </view>
         </view>
     </view>

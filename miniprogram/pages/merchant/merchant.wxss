@@ -1,1 +1,4 @@
 /* miniprogram/pages/merchant/merchant.wxss */
+page{
+  height: 100%;
+}

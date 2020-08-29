@@ -14,7 +14,7 @@
         </view>
     </view>
     <view class="entry-button">
-        <van-button type="primary" block bindtap="entryApp" >进入</van-button>
+        <van-button type="primary" block bindtap="entryApp">进入</van-button>
     </view>
 </view>
 <!-- toast轻提示 -->

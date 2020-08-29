@@ -1,5 +1,4 @@
 /* miniprogram/pages/index/index.wxss */
-/* 去除跳转完后的回首页标签 */
 .container{
     position: absolute;
     top: 10vh;
