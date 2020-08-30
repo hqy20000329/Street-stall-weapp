@@ -1,2 +1,20 @@
 <!--components/visitor-activityPage/index.wxml-->
-<text>components/visitor-activityPage/index.wxml</text>
+<!-- 游客活动页navbar -->
+<van-nav-bar title="标题" fixed>
+  <van-icon name="search" slot="right" />
+</van-nav-bar>
+
+<!-- 下拉菜单 -->
+<van-dropdown-menu>
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+</van-dropdown-menu>
+
+<!-- 活动列表 -->
+<view class="wrap">
+    <view class="activityCard"></view>
+</view>
+
+<view class="wrap">
+    <view class="activityCard"></view>
+</view>

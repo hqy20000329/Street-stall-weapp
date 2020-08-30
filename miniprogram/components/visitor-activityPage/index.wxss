@@ -1,1 +1,16 @@
 /* components/visitor-activityPage/index.wxss */
+.wrap{
+    width: 100%;
+    height: 280rpx;
+    padding: 20rpx 60rpx;
+    box-sizing: border-box;
+}
+
+.activityCard{
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    border-radius: 30rpx;
+    box-shadow: 10rpx 15rpx 15rpx gray;
+    display: flex;
+}
