@@ -4,7 +4,20 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    
+    // 活动数据
+    activityList:{
+      type:Array,
+      value:[
+        {
+          id:"",
+          title:"test",
+          desc:"This is a test word",
+          startTime:"19:00",
+          endTime:"23:00",
+          interestNum:1000
+        }
+      ]
+    }
   },
 
   /**
