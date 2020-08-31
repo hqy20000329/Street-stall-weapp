@@ -2,9 +2,9 @@
   "usingComponents": {
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "visitor-homePage" : "../../components/visitor-homePage/index",
-    "visitor-activityPage" : "../../components/visitor-activityPage/index",
-    "visitor-minePage" : "../../components/visitor-minePage/index"
+    "visitor-homePage" : "../../views/visitor-homePage/index",
+    "visitor-activityPage" : "../../views/visitor-activityPage/index",
+    "visitor-minePage" : "../../views/visitor-minePage/index"
   },
   "navigationStyle": "custom",
   "disableScroll": true

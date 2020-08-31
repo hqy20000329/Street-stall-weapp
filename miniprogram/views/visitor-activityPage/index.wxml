@@ -1,7 +1,6 @@
 <!-- components/visitor-activityPage/index.wxml -->
 <!-- 游客活动页navbar -->
-<van-nav-bar title="标题" fixed>
-  <van-icon name="search" slot="right" />
+<van-nav-bar title="活动中心" fixed>
 </van-nav-bar>
 <!-- 下拉菜单 -->
 <van-dropdown-menu>
@@ -9,7 +8,7 @@
   <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
 </van-dropdown-menu>
 <!-- 活动列表 -->
-<block wx:for="{{activityList}}" wx:key="*this">
+<block wx:for="{{activityList}}" wx:key="index">
   <view class="wrap">
     <view class="activityCard">
       <view class="activity-text">
