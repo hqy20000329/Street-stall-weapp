@@ -1,4 +1,5 @@
 node_modules/
+miniprogram_npm/
 
 # Compiled class file
 *.class

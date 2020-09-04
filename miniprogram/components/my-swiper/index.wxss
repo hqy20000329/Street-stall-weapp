@@ -1,0 +1,41 @@
+.wrap{
+    position: relative;
+    padding: 5px 0 5px 0;
+    box-sizing: border-box;
+}
+
+.swiper-container {
+    height: 12vh;
+    display: block;
+}
+
+.swiper-item {
+    width: 100%;
+    text-align: center;
+}
+
+.swiper-item image {
+    width: 95%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* swiper-dot 的样式*/
+.swiper-dot-container{
+    position: absolute;
+    bottom: 16rpx;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.swiper-dot{
+    width: 25rpx;
+    height: 2rpx;
+    background-color: gray;
+    margin: 0 5rpx 0 5rpx;
+}
+
+.swiper-dot-active{
+    background-color: white;
+}

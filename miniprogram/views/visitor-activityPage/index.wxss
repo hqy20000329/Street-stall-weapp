@@ -1,0 +1,36 @@
+/* components/visitor-activityPage/index.wxss */
+.wrap {
+    width: 100%;
+    height: 280rpx;
+    padding: 20rpx 60rpx;
+    box-sizing: border-box;
+}
+
+.activityCard {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    border-radius: 30rpx;
+    box-shadow: 10rpx 15rpx 15rpx gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.activity-text {
+    flex: 1;
+    height: 200rpx;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    overflow: hidden;
+}
+
+.activity-text .desc {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

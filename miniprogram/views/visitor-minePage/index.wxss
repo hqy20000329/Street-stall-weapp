@@ -1,0 +1,27 @@
+/* components/visitor-minePage/index.wxss */
+.userInfo-wrap{
+    width: 100%;
+    height: 160rpx;
+    padding:15rpx 20rpx;
+    box-sizing: border-box;
+}
+
+.userInfo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-avatar{
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-name{
+    margin-right: 150rpx;
+    font-size: 40rpx;
+}
