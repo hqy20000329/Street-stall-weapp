@@ -1,0 +1,4 @@
+<!-- components/ztopBar/toBar.wxml -->
+<view class="topBar">
+    <input class="search" placeholder="🔍" style="height:32rpx; min-height:32rpx; line-height:32rpx; left:130rpx; bottom:{{menuBotton}}px;font-size:25rpx;"></input>
+</view>
