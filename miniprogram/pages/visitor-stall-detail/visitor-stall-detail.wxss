@@ -1,0 +1,55 @@
+/* miniprogram/pages/visitor-stall-detail/visitor-stall-detail.wxss */
+.stall-detail {}
+
+.live-desc {
+    width: 700rpx;
+    height: 60rpx;
+    padding: 10rpx 25rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.live-wrapper {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.watched {
+    font-size: 24rpx;
+}
+
+.live-img-list {
+    white-space: nowrap
+}
+
+.live-image_scroll {
+    width: 100%;
+    height: 250rpx;
+}
+
+.img-container {
+    height: 250rpx;
+    width: 250rpx;
+    padding: 15rpx;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.stall-activity{
+    background-color: gray;
+}
+
+.title{
+    width: 700rpx;
+    height: 60rpx;
+    padding: 10rpx 25rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.activity-desc{
+    width: 100%;
+    height: 300rpx;
+    background-color: indianred;
+}

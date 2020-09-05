@@ -1,0 +1,37 @@
+<!-- miniprogram/pages/visitor-stall-detail/visitor-stall-detail.wxml -->
+<view class="stall-detail">
+    <scroll-view >
+    <view class="live-wrapper">
+        <view class="live-desc">
+            <view class="live-title">现场环境</view>
+            <view class="watched">已浏览100</view>
+        </view>
+        <view class="live-img-list">
+            <scroll-view scroll-x="true" class="live-image_scroll">
+                <block wx:for="{{stallData.imgList}}" wx:key="index">
+                    <view class="img-container">
+                        <van-image width="100%" height="100%" fit="fill" src="{{item}}" />
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="stall-activity">
+        <view class="activity-title title">活动列表</view>
+        <view class="activity-desc"></view>
+    </view>
+    <view class="stall-desc">
+        <view class="stall-desc-title title">摊位介绍</view>
+        <stall-card></stall-card>
+    </view>
+    <view class="stall-assess">
+        <view class="stall-assess-title title">用户评价</view>
+        <stall-assess></stall-assess>
+    </view>
+    </scroll-view>
+    <van-goods-action>
+        <van-goods-action-icon icon="star-o" text="收藏" bind:click="onClickIcon" />
+        <van-goods-action-button text="获取优惠" type="warning" bind:click="onClickButton" />
+        <van-goods-action-button text="立即前往" bind:click="onClickButton" />
+    </van-goods-action>
+</view>

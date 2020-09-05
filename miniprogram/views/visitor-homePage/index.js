@@ -25,6 +25,8 @@ Component({
       type: Array,
       value: [
         {
+          // 摊位id
+          id: 1231213,
           // 摊位名
           title: "test",
           // 封面图片
