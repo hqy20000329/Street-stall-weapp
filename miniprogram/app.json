@@ -11,11 +11,6 @@
     }
   },
   "window": {
-<<<<<<< HEAD
-    "navigationStyle": "custom"
-  },
-  "sitemapLocation": "sitemap.json"
-=======
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
@@ -23,5 +18,4 @@
   },
   "sitemapLocation": "sitemap.json",
   "style" :"v2"
->>>>>>> 94c1f27c7037bc313836d4527a5a1240c990cab4
 }
