@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/guide/guide",
     "pages/visitor/visitor",
-    "pages/merchant/merchant"
+    "pages/merchant/merchant",
+    "pages/visitor-stall-detail/visitor-stall-detail"
   ],
   "permission": {
     "scope.userLocation": {
@@ -16,6 +17,5 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style" :"v2"
+  "sitemapLocation": "sitemap.json"
 }

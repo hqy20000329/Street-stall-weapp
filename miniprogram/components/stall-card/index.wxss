@@ -1,0 +1,12 @@
+/* components/stall-card/index.wxss */
+.stall-card{
+    display: flex;
+}
+
+.stall-message{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: indigo;
+    height: 180rpx;
+}
