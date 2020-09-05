@@ -1,8 +1,13 @@
 {
+<<<<<<< HEAD
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
   },
+=======
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+>>>>>>> master
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -34,6 +39,7 @@
     "packNpmManually": false,
     "packNpmRelationList": []
   },
+<<<<<<< HEAD
   "compileType": "miniprogram",
   "libVersion": "2.12.1",
   "appid": "wx0e11bd58b4fc0152",
@@ -50,6 +56,14 @@
   "scripts": {},
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+=======
+  "appid": "wx0e11bd58b4fc0152",
+  "projectname": "Street-stall-weapp",
+  "libVersion": "2.12.2",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+>>>>>>> master
   "condition": {
     "search": {
       "current": -1,
@@ -64,6 +78,7 @@
       "list": []
     },
     "game": {
+<<<<<<< HEAD
       "current": -1,
       "list": []
     },
@@ -73,12 +88,22 @@
     },
     "miniprogram": {
       "current": -1,
+=======
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+>>>>>>> master
       "list": [
         {
           "id": -1,
           "name": "db guide",
+<<<<<<< HEAD
           "pathName": "pages/databaseGuide/databaseGuide",
           "query": ""
+=======
+          "pathName": "pages/databaseGuide/databaseGuide"
+>>>>>>> master
         }
       ]
     }
