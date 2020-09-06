@@ -1,5 +1,5 @@
 <!--miniprogram/pages/merchant/merchant.wxml-->
-<text>miniprogram/pages/merchant/merchant.wxml</text>
+<van-button type="default" bind:click="uploadImg">默认按钮</van-button>
 <view style="height:100%"></view>
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item icon="home-o">标签</van-tabbar-item>
