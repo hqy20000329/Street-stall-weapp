@@ -6,6 +6,7 @@ cloud.init({
 });
 const db = cloud.database();
 const _ = db.command;
+const $ = _.aggregate;
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -22,9 +23,10 @@ exports.main = async (event, context) => {
     }
   }).then(res => {
     const update_stall_stall = new Promise((resolve,reject) => {
+
       db.collection('stall_stall').doc(stallId).update({
         data: {
-          assessList: _.push(res.id)
+          scoreList: _.push({scoreId:res._id,score}),
         }
       }).then(res => {
         resolve(res);
@@ -32,13 +34,14 @@ exports.main = async (event, context) => {
         reject(err);
       });
     });
+    
     const update_stall_user = new Promise((resolve, reject) => {
       db.collection('stall_user').where({
         userId: openId,
         actorId: 1
       }).update({
         data: {
-          assessList: _.push(res._id)
+          scoreList: _.push(res._id)
         }
       }).then(res => {
         resolve(res);

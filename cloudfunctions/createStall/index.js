@@ -6,6 +6,7 @@ cloud.init({
 });
 const db = cloud.database();
 const _ = db.command;
+const $ =db.command.aggregate;
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -19,16 +20,20 @@ exports.main = async (event, context) => {
     closeTime: ''
   }; */
   const coverImg = event.coverImg; // 封面图片
-  const descImg = event.descImgs;// 图片地址数组
+  const descImgs = event.descImgs;// 图片地址数组
   const location = event.location; // 地理位置
   /**{
     latitude:'',
     longitude:''
   };*/
+  const localCity = event.localCity;// 县 区
+  const businessArea = event.businessArea; // 商圈
+
   const activityList = [] // 活动数组
   const isOpen = false; // 是否营业
   const assessList = []; // 评价数组存评价id
   const scoreList = []; //存评分id 
+  const score = 0; // 评分
   const hadSeenNum = 0; //浏览人数
 
   return await db.collection('stall_stall').add({
@@ -39,12 +44,15 @@ exports.main = async (event, context) => {
       desc,
       openTime,
       coverImg,
-      descImg,
+      descImgs,
       location,
+      localCity,
+      businessArea,
       isOpen,
       activityList,
       assessList,
       scoreList,
+      score,
       hadSeenNum,
       createTime: Date.now() 
     }
