@@ -5,7 +5,3 @@
     bottom: 150rpx;
     z-index: 1000;
 }
-van-icon{
-    border-radius: 50%;
-    box-shadow: 5rpx 10rpx 10rpx gray;
-}
