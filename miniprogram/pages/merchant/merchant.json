@@ -1,8 +1,11 @@
 {
   "usingComponents": {
+    "merchant-stallPage" : "../../views/merchant-stallPage/index",
+    "merchant-minePage" : "../../views/merchant-minePage/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-button": "@vant/weapp/button/index"
   },
+  "navigationStyle": "custom",
   "disableScroll": true
 }

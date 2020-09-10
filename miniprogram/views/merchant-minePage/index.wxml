@@ -1,0 +1,8 @@
+<!-- views/merchant-minePage/index.wxml -->
+<!-- navbar -->
+<van-nav-bar title="营业信息" />
+
+<!-- 头部区域 -->
+<view class="header">
+    
+</view>

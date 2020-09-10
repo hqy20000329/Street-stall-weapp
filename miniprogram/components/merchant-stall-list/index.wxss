@@ -1,0 +1,80 @@
+/* components/merchant-stall-list/index.wxss */
+.stall-wrapper {
+    width: 750rpx;
+    height: 360rpx;
+    padding: 10rpx 30rpx;
+    box-sizing: border-box;
+}
+
+.stall-card {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    border-radius: 25rpx;
+    box-shadow: 10rpx 15rpx 15rpx gray;
+}
+
+.title {
+    text-align: center;
+    font-size: 34rpx;
+    margin: 10rpx;
+}
+
+.content-wrapper {
+    height: 180rpx;
+    display: flex;
+}
+
+.left-wrapper{
+    flex: 1;
+    height: 100%;
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.line{
+    flex: 1;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.line-one{
+    justify-content: space-between;
+}
+
+.right-wrapper{
+    height: 100%;
+    background-color: seagreen;
+    margin: 0 20rpx;
+}
+
+.bottom-wrapper {
+    position: relative;
+    height: 80rpx;
+    margin-top: 10rpx;
+    text-align: center;
+}
+
+.button {
+    width: 250rpx;
+    background-color: #FF5733;
+    color: #ffffff;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    justify-self: center;
+    display: inline-block;
+}
+
+.edit {
+    position: absolute;
+    display: flex;
+    font-size: 20rpx;
+    align-self: flex-end;
+    right: 12rpx;
+    bottom: 0;
+    align-items: center;
+}
