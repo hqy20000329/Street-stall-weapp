@@ -1,0 +1,30 @@
+<!--components/merchant-stall-list/index.wxml-->
+<view class="stall-wrapper">
+    <view class="stall-card">
+        <view class="title">test</view>
+        <view class="content-wrapper">
+            <view class="left-wrapper">
+                <view class="line-one line">
+                    <view class="business-area">青山湖区</view>
+                    <view class="tag">美食</view>
+                </view>
+                <view class="line-two line">
+                    详细位置
+                </view>
+                <view class="line-three line">
+                    时间: 19:00 - 24:00
+                </view>
+            </view>
+            <view class="right-wrapper">
+                <van-image width="180rpx" height="180rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            </view>
+        </view>
+        <view class="bottom-wrapper">
+            <view class="button">开始营业</view>
+            <view class="edit">编辑摊位信息
+                <van-icon name="arrow" size="20rpx"/>
+            </view>
+        </view>
+    </view>
+</view>
+

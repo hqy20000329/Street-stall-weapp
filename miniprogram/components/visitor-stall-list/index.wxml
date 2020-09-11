@@ -1,5 +1,5 @@
 <block wx:for="{{stallList}}" wx:key="*this">
-<van-card tag="{{item.tag}}" thumb="{{item.coverImg}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}">
+<van-card tag="{{item.tag}}" thumb="{{item.coverImg}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="enterStall">
     <view slot="title">
         <view class="row-style">
             <view class="stall-title">{{item.title}}</view>
@@ -17,7 +17,7 @@
     <view slot="price-top">
         <view class="row-style">
             <view class="stall-open-time">
-                营业时间: {{item.startTime}} - {{item.endTime}}
+                营业时间: {{item.startTime}} - {{item.closeTime}}
             </view>
             <view class="stall-distance">{{item.distance}}m</view>
         </view>
@@ -26,7 +26,7 @@
         <view class="row-style">
             <view>{{item.localCity}} {{item.businessArea}}</view>
             <view class="stall-special-offer">
-                <van-tag class="tag-padding" plain type="danger">{{item.promotionNum}}优惠</van-tag>
+                <!-- <van-tag class="tag-padding" plain type="danger">{{item.promotionNum}}优惠</van-tag> -->
                 <van-tag class="tag-padding" plain type="danger">{{item.activityNum}}活动</van-tag>
             </view>
         </view>

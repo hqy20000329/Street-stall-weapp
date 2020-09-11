@@ -1,0 +1,64 @@
+<!-- views/merchant-minePage/index.wxml -->
+<!-- navbar -->
+<van-nav-bar title="营业信息" />
+<!-- 头部区域 -->
+<view class="header">
+    <view class="header-wrapper">
+        <view class="user-avatar">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class="mid-content">
+            <view class="title">test</view>
+            <view class="score">
+                评分:
+                <van-rate readonly allow-half value="{{ value }}" size="20rpx" gutter="0rpx" color="#ee0a24" />
+            </view>
+            <view class="tag">
+                <van-tag type="primary">美食</van-tag>
+            </view>
+        </view>
+        <view class="right-content">
+            <view class="show-open">
+                <van-tag type="danger" round size="medium" plain>营业中</van-tag>
+            </view>
+            <view class="total-stall">
+                <text>查看我的摊位</text>
+                <van-icon name="arrow" />
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 营业信息 -->
+<view class="message border-box">
+    <view class="visited-wrapper wrapper">
+        <view class="num">0</view>
+        <view class="desc">浏览数</view>
+    </view>
+    <view class="mid-line"></view>
+    <view class="custom-num-wrapper wrapper">
+        <view class="num">0</view>
+        <view class="desc">接待数</view>
+    </view>
+</view>
+<!-- 操作 -->
+<view class="message border-box">
+    <view class="wrapper">
+        <van-icon name="/images/icon/merchant-assess.png" size="50px" />
+        <view class="type">用户评价</view>
+    </view>
+    <view class="mid-line"></view>
+    <view class="wrapper">
+        <van-icon name="/images/icon/merchant-activity.png" size="50px" />
+        <view class="type">优惠活动</view>
+    </view>
+    <view class="mid-line"></view>
+    <view class="wrapper">
+        <van-icon name="/images/icon/merchant-create.png" size="50px" />
+        <view class="type">添加摊位</view>
+    </view>
+</view>
+
+<!-- 打烊按钮 -->
+<view class="close-stall">
+    <van-icon name="/images/icon/merchant-close.png" size="70rpx" color="#1296db" />
+</view>
