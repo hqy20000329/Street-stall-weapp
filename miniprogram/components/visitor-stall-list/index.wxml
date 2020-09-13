@@ -1,5 +1,5 @@
 <block wx:for="{{stallList}}" wx:key="*this">
-<van-card tag="{{item.tag}}" thumb="{{item.coverImg}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="enterStall">
+<van-card tag="{{item.tag}}" thumb="{{item.coverImg[0].url}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="enterStall">
     <view slot="title">
         <view class="row-style">
             <view class="stall-title">{{item.title}}</view>

@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-icon": "@vant/weapp/icon/index",
-    "merchant-stall-list": "../../components/merchant-stall-list/index"
+    "merchant-stall-list": "../../components/merchant-stall-list/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

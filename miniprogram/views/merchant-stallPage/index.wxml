@@ -4,6 +4,8 @@
 <!-- 商家摊位列表 -->
 <merchant-stall-list></merchant-stall-list>
 <!-- 添加摊位图标 -->
-<view class="add-stall">
+<view class="add-stall" bindtap="addStall">
     <van-icon name="add" size="70rpx" color="#1296db" />
 </view>
+
+<van-toast id="van-toast" />

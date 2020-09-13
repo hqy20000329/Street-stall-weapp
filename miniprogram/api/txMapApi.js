@@ -39,6 +39,7 @@ const translate = async (locationList, type, key = LHN_key) => {
 };
 
 /**
+ * 逆地址解析
  * @param {*} locationObj {latitude(纬度):"", longitude(经度):""}
  * @param {*} get_poi 0~1
  * @param {*} poi_optionsList 见https://lbs.qq.com/service/webService/webServiceGuide/webServiceGcoder

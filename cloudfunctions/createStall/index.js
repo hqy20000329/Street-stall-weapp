@@ -28,6 +28,7 @@ exports.main = async (event, context) => {
   };*/
   const localCity = event.localCity;// 县 区
   const businessArea = event.businessArea; // 商圈
+  const address = event.address; // 地址描述
 
   const activityList = [] // 活动数组
   const isOpen = false; // 是否营业
@@ -47,6 +48,7 @@ exports.main = async (event, context) => {
       descImgs,
       location,
       localCity,
+      address,
       businessArea,
       isOpen,
       activityList,
