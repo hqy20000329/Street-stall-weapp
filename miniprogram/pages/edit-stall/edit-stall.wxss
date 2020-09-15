@@ -1,0 +1,35 @@
+/* miniprogram/pages/edit-stall/edit-stall.wxss */
+.img-wrapper{
+    display: flex;
+}
+
+.descImg{
+    flex:1
+}
+
+.time{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 50rpx;
+}
+
+.time-title{
+    width: 150rpx;
+}
+
+.time-line{
+    flex: 1;
+}
+
+.time-button{
+    flex: 2;
+}
+
+.submit{
+    text-align: center;
+    margin: 50rpx 0;
+    padding: 0 50rpx;
+    box-sizing: border-box;
+}

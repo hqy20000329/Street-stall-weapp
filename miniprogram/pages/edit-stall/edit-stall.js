@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id: "",
     title: "",
     coverImg: [],
     descImgs: [],
@@ -198,64 +199,68 @@ Page({
     });
   },
 
-  getLocation() {
-    const self = this;
-    getUserLocation().then((res) => {
-      console.log("当前位置", res);
-      self.setData({
-        location: {
-          latitude: res.latitude,
-          longitude: res.longitude,
-        },
-      });
-      geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
-        (res) => {
-          const localData = res.data.result;
-          console.log("逆地址解析2", localData);
-          self.setData({
-            address: localData.address,
-            localCity: localData.ad_info.district || localData.ad_info.city,
-            businessArea: localData.address_reference.business_area
-              ? localData.address_reference.business_area.title
-              : localData.address_component.street || "",
-          });
-        }
-      );
-    });
-  },
+  // getLocation() {
+  //   const self = this;
+  //   getUserLocation().then((res) => {
+  //     console.log("当前位置", res);
+  //     self.setData({
+  //       location: {
+  //         latitude: res.latitude,
+  //         longitude: res.longitude,
+  //       },
+  //     });
+  //     geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
+  //       (res) => {
+  //         const localData = res.data.result;
+  //         console.log("逆地址解析2", localData);
+  //         self.setData({
+  //           address: localData.address,
+  //           localCity: localData.ad_info.district || localData.ad_info.city,
+  //           businessArea: localData.address_reference.business_area
+  //             ? localData.address_reference.business_area.title
+  //             : localData.address_component.street || "",
+  //         });
+  //       }
+  //     );
+  //   });
+  // },
 
   /**
    * 创建摊位
    */
-  createStall() {
+  editStall() {
+    const self = this;
     Toast.loading({
-      message: "创建中...",
+      message: "修改中...",
       forbidClick: true,
       loadingType: "spinner",
     });
+    console.log(self.data.stallDesc);
     wx.cloud.callFunction({
-      name: "createStall",
+      name: "editOneStall",
       data: {
-        title: this.data.title,
-        label: this.data.stallType,
-        desc: this.data.stallDesc,
+        operate: 'update',
+        stallId: self.data.id,
+        title: self.data.title,
+        label: self.data.stallType,
+        desc: self.data.stallDesc,
         openTime: {
-          startTime: this.data.startTime,
-          closeTime: this.data.closeTime,
+          startTime: self.data.startTime,
+          closeTime: self.data.closeTime,
         },
-        coverImg: this.data.coverImg,
-        descImgs: this.data.descImgs,
-        location: this.data.location,
-        localCity: this.data.localCity,
-        address: this.data.address,
-        businessArea: this.data.businessArea,
+        coverImg: self.data.coverImg,
+        descImgs: self.data.descImgs,
+        // location: self.data.location,
+        // localCity: self.data.localCity,
+        // address: self.data.address,
+        // businessArea: self.data.businessArea,
       },
       success(res) {
         console.log(res);
         Toast.clear();
         Notify({
           type: "success",
-          message: "创建成功",
+          message: "修改成功",
           duration: 500,
           onClose: () => {
             wx.navigateBack();
@@ -265,7 +270,7 @@ Page({
       fail(err) {
         console.log(err);
         Toast.clear();
-        Notify({ type: "danger", message: "创建失败",duration: 1500, });
+        Notify({ type: "danger", message: "修改失败",duration: 1500, });
       },
     });
   },
@@ -274,24 +279,49 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
+    this.setData({
+      id: options.stall_id,
+    })
+    // wx.getSetting({
+    //   success: (res) => {
+    //     if (!res.authSetting["scope.userLocation"]) {
+    //       wx.authorize({
+    //         scope: "scope.userLocation",
+    //         success() {
+    //           self.getLocation();
+    //         },
+    //       });
+    //     } else {
+    //       self.getLocation();
+    //     }
+    //   },
+    //   fail: () => {
+    //     console.log("用户未授权");
+    //   },
+    // });
 
-    wx.getSetting({
-      success: (res) => {
-        if (!res.authSetting["scope.userLocation"]) {
-          wx.authorize({
-            scope: "scope.userLocation",
-            success() {
-              self.getLocation();
-            },
-          });
-        } else {
-          self.getLocation();
-        }
+    wx.cloud.callFunction({
+      name: "editOneStall",
+      data:{
+        operate: 'get',
+        stallId: self.data.id,
       },
-      fail: () => {
-        console.log("用户未授权");
+      success(res){
+        const resData = res.result.data;
+        self.setData({
+          title:resData.title,
+          coverImg: resData.coverImg,
+          descImgs: resData.descImgs,
+          stallType: resData.label,
+          startTime: resData.openTime.startTime,
+          closeTime: resData.openTime.closeTime,
+          stallDesc: resData.desc,
+        })
       },
-    });
+      fail(err){
+        console.log(err);
+      }
+    })
   },
 
   /**

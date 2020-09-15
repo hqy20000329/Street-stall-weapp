@@ -2,9 +2,9 @@
 <!-- navbar -->
 <van-nav-bar title="我的摊位" />
 <!-- 商家摊位列表 -->
-<merchant-stall-list></merchant-stall-list>
+<merchant-stall-list stallLists="{{stallLists}}"></merchant-stall-list>
 <!-- 添加摊位图标 -->
-<view class="add-stall" bindtap="addStall">
+<view class="add-stall" bindtap="addStall" wx:if="{{num !== 3}}">
     <van-icon name="add" size="70rpx" color="#1296db" />
 </view>
 

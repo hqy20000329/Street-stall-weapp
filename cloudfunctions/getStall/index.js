@@ -9,5 +9,16 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
-  return await db.collection('stall_stall').get().then(res => res)
+  return await db.collection('stall_stall').field({
+    _id:true,
+    title:true,
+    coverImg:true,
+    hadSeenNum:true,
+    label:true,
+    score:true,
+    localCity:true,
+    businessArea:true,
+    openTime:true,
+    activityList:true,
+  }).get().then(res => res)
 }
