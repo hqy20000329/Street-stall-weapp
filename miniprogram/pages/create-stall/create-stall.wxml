@@ -39,29 +39,36 @@
         <van-divider contentPosition="center">上传摊位宣传图片</van-divider>
         <view class="img-wrapper">
             <view class="coverImg">
-                <van-uploader file-list="{{ coverImg }}" deletable="{{true}}" preview-size="350rpx" upload-text="上传封面图片" bind:after-read="afterReadCoverImg" max-count="1" bind:delete="deleteCoverImg" />
+                <van-uploader file-list="{{ tempCoverImg }}" deletable="{{true}}" preview-size="350rpx" upload-text="上传封面图片" bind:after-read="afterReadCoverImg" max-count="1" bind:delete="deleteCoverImg" />
             </view>
             <view class="descImg">
-                <van-uploader file-list="{{ descImgs }}" deletable="{{true}}" preview-size="168rpx" upload-text="上传图片" upload-icon="plus" multiple="{{true}}" bind:after-read="afterReadDescImg" max-count="4" bind:delete="deleteDescImg" />
+                <van-uploader file-list="{{ tempDescImgs }}" deletable="{{true}}" preview-size="168rpx" upload-text="上传图片" upload-icon="plus" multiple="{{true}}" bind:after-read="afterReadDescImg" max-count="4" bind:delete="deleteDescImg" />
             </view>
         </view>
     </view>
     <!-- 摊位描述 -->
     <view class="descText-wrapper">
         <van-divider contentPosition="center">请输入摊位描述</van-divider>
-        <van-field model:value="{{ stallDesc }}" type="textarea" placeholder="请输入摊位描述" autosize border="{{ true }}" title-width="120rpx" />
+        <van-field model:value="{{ stallDesc }}" type="textarea" placeholder="请输入摊位描述(详细位置,摊位介绍等)" autosize border="{{ true }}" title-width="120rpx" />
     </view>
     <!-- 定位 -->
     <view class="location-wrapper">
-        
+        <van-divider contentPosition="center">定位位置</van-divider>
+        <view class="location">
+            <view class="location-text">{{address}}</view>
+            <view hidden="{{locationLoading}}">
+            <van-icon  bind:click="refreshLocation" name="replay" />
+            </view>
+            <view hidden="{{!locationLoading}}">
+                <van-loading size="{{16}}" />
+            </view>
+        </view>
     </view>
     <view class="submit">
         <van-button round type="info" block bind:click="createStall">发布摊位</van-button>
     </view>
-
     <!-- toast轻提示 -->
     <van-toast id="van-toast" />
-
     <!-- notify -->
-    <van-notify id="van-notify" />  
+    <van-notify id="van-notify" />
 </view>

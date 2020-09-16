@@ -29,6 +29,9 @@ Page({
     minHour: 0,
     maxHour: 23,
 
+    tempCoverImg: [], // 展示用摊位封面图
+    tempDescImgs: [], // 展示用摊位描述图
+
     stallTypeList: [
       { text: "未选择", value: "未选择" },
       { text: "美食小吃", value: "美食" },
@@ -36,6 +39,8 @@ Page({
       { text: "生活用品", value: "生活" },
       { text: "创意小摊", value: "创意" },
     ],
+
+    locationLoading: false,
   },
 
   /**
@@ -53,7 +58,9 @@ Page({
   afterReadCoverImg(e) {
     const self = this;
     const { file } = e.detail;
-    console.log(e);
+    self.setData({
+      tempCoverImg: [{ url: file.path }],
+    });
     let tempFileName = Date.now() + Math.floor(Math.random() * 1000) + ".png";
     wx.cloud.uploadFile({
       cloudPath: couldImgFilePath.stallCoverImg + tempFileName,
@@ -81,6 +88,7 @@ Page({
   deleteCoverImg() {
     this.setData({
       coverImg: [],
+      tempCoverImg: [],
     });
   },
 
@@ -90,7 +98,11 @@ Page({
   afterReadDescImg(e) {
     const self = this;
     const { file } = e.detail;
-    console.log(file);
+    file.forEach((item) => {
+      self.setData({
+        tempDescImgs: [...this.data.tempDescImgs, { url: item.path }],
+      });
+    });
     const tasks = [];
     for (let item of file) {
       let tempFileName = Date.now() + Math.floor(Math.random() * 1000) + ".png";
@@ -119,10 +131,13 @@ Page({
    * 移除描述图片
    */
   deleteDescImg(event) {
-    let temp = this.data.descImgs;
-    temp.splice(event.detail.index, 1);
+    let descImgs = [...this.data.descImgs];
+    let tempDescImgs = [...this.data.tempDescImgs];
+    descImgs.splice(event.detail.index, 1);
+    tempDescImgs.splice(event.detail.index, 1);
     this.setData({
-      descImgs: temp,
+      descImgs,
+      tempDescImgs,
     });
   },
 
@@ -200,6 +215,9 @@ Page({
 
   getLocation() {
     const self = this;
+    self.setData({
+      locationLoading: true,
+    });
     getUserLocation().then((res) => {
       console.log("当前位置", res);
       self.setData({
@@ -218,10 +236,19 @@ Page({
             businessArea: localData.address_reference.business_area
               ? localData.address_reference.business_area.title
               : localData.address_component.street || "",
+            locationLoading: false,
           });
+          Notify({ type: "success", message: "位置获取成功", duration: 600 });
         }
       );
     });
+  },
+
+  /**
+   * 重新定位
+   */
+  refreshLocation() {
+    this.getLocation();
   },
 
   /**
@@ -265,7 +292,7 @@ Page({
       fail(err) {
         console.log(err);
         Toast.clear();
-        Notify({ type: "danger", message: "创建失败",duration: 1500, });
+        Notify({ type: "danger", message: "创建失败", duration: 1500 });
       },
     });
   },
@@ -274,7 +301,6 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
-
     wx.getSetting({
       success: (res) => {
         if (!res.authSetting["scope.userLocation"]) {

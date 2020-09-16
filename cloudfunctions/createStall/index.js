@@ -36,6 +36,8 @@ exports.main = async (event, context) => {
   const scoreList = []; //存评分id 
   const score = 0; // 评分
   const hadSeenNum = 0; //浏览人数
+  const customNum = 0; // 接待人数
+  const lastOpenTime = 0;// 上一次营业时间
 
   return await db.collection('stall_stall').add({
     data: {
@@ -56,6 +58,8 @@ exports.main = async (event, context) => {
       scoreList,
       score,
       hadSeenNum,
+      customNum,
+      lastOpenTime,
       createTime: Date.now() 
     }
   }).then(res => {

@@ -8,21 +8,21 @@
             <open-data type="userAvatarUrl"></open-data>
         </view>
         <view class="mid-content">
-            <view class="title">test</view>
+            <view class="title">{{totalStall.title}}</view>
             <view class="score">
                 评分:
-                <van-rate readonly allow-half value="{{ value }}" size="20rpx" gutter="0rpx" color="#ee0a24" />
+                <van-rate readonly allow-half value="{{ totalStall.score }}" size="20rpx" gutter="0rpx" color="#ee0a24" />
             </view>
             <view class="tag">
-                <van-tag type="primary">美食</van-tag>
+                <van-tag type="primary">{{totalStall.label}}</van-tag>
             </view>
         </view>
         <view class="right-content">
             <view class="show-open">
-                <van-tag type="danger" round size="medium" plain>营业中</van-tag>
+                <van-tag type="danger" round size="medium" plain>{{totalStall.isOpen ? '营业中': '休息中'}}</van-tag>
             </view>
-            <view class="total-stall">
-                <text>查看我的摊位</text>
+            <view class="total-stall" bindtap="changeTotalStall">
+                <text>切换当前摊位</text>
                 <van-icon name="arrow" />
             </view>
         </view>
@@ -31,12 +31,12 @@
 <!-- 营业信息 -->
 <view class="message border-box">
     <view class="visited-wrapper wrapper">
-        <view class="num">0</view>
+        <view class="num">{{totalStall.hadSeenNum}}</view>
         <view class="desc">浏览数</view>
     </view>
     <view class="mid-line"></view>
     <view class="custom-num-wrapper wrapper">
-        <view class="num">0</view>
+        <view class="num">{{totalStall.customNum}}</view>
         <view class="desc">接待数</view>
     </view>
 </view>
@@ -57,7 +57,10 @@
         <view class="type">添加摊位</view>
     </view>
 </view>
-
+<!-- 弹出层选择摊位 -->
+<van-popup show="{{ showPopup }}" position="bottom" custom-style="height: 40%" closeable close-icon="close" bind:close="onClose" z-index="{{9999}}">
+    
+</van-popup>
 <!-- 打烊按钮 -->
 <view class="close-stall">
     <van-icon name="/images/icon/merchant-close.png" size="70rpx" color="#1296db" />

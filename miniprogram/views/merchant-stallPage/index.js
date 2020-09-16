@@ -5,7 +5,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    num:{
+      type:Number,
+      value:0,
+    },
+    stallLists:{
+      type:Array,
+      value: [],
+    }
   },
 
   /**
@@ -15,6 +22,7 @@ Component({
     // 摊位数量 最大3个
     num: 0,
     stallLists:[],
+    totalStall: {},
   },
 
   /**
@@ -45,38 +53,7 @@ Component({
 
   pageLifetimes: {
     show: function() {
-      const self = this;
-      // 页面被展示
-      wx.cloud.callFunction({
-        name:"getMerChantStall",
-        success(res){
-          console.log(res.result);
-          const resData = res.result;
-          const stallLists = []
-          self.setData({
-            num: resData.length,
-          });
-          resData.forEach( ({ data }) => {
-            stallLists.push({
-              id: data._id,
-              title: data.title,
-              coverImg: data.coverImg,
-              localCity: data.localCity,
-              address: data.address,
-              businessArea: data.businessArea,
-              openTime: data.openTime,
-              label: data.label,
-            })
-          });
-          self.setData({
-            stallLists,
-          });
-          console.log(self.data.stallLists);
-        },
-        fail(err){
-          console.log(err);
-        }
-      })
+
     },
   }
 })

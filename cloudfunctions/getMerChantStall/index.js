@@ -29,7 +29,13 @@ exports.main = async (event, context) => {
           address: true,
           businessArea: true,
           openTime: true,
-          label: true
+          label: true,
+          hadSeenNum: true,
+          customNum: true,
+          isOpen: true,
+          score: true,
+          createTime:true,
+          lastOpenTime: true,
         }).get()
         .then(res => {
           resolve(res);

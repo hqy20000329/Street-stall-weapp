@@ -39,10 +39,10 @@
         <van-divider contentPosition="center">上传摊位宣传图片</van-divider>
         <view class="img-wrapper">
             <view class="coverImg">
-                <van-uploader file-list="{{ coverImg }}" deletable="{{true}}" preview-size="350rpx" upload-text="上传封面图片" bind:after-read="afterReadCoverImg" max-count="1" bind:delete="deleteCoverImg" />
+                <van-uploader file-list="{{ tempCoverImg }}" deletable="{{true}}" preview-size="350rpx" upload-text="上传封面图片" bind:after-read="afterReadCoverImg" max-count="1" bind:delete="deleteCoverImg" />
             </view>
             <view class="descImg">
-                <van-uploader file-list="{{ descImgs }}" deletable="{{true}}" preview-size="168rpx" upload-text="上传图片" upload-icon="plus" multiple="{{true}}" bind:after-read="afterReadDescImg" max-count="4" bind:delete="deleteDescImg" />
+                <van-uploader file-list="{{ tempDescImgs }}" deletable="{{true}}" preview-size="168rpx" upload-text="上传图片" upload-icon="plus" multiple="{{true}}" bind:after-read="afterReadDescImg" max-count="4" bind:delete="deleteDescImg" />
             </view>
         </view>
     </view>
@@ -53,8 +53,18 @@
     </view>
     <!-- 定位 -->
     <view class="location-wrapper">
-        
+        <van-divider contentPosition="center">定位位置</van-divider>
+        <view class="location">
+            <view class="location-text">{{address}}</view>
+            <view hidden="{{locationLoading}}">
+            <van-icon  bind:click="refreshLocation" name="replay" />
+            </view>
+            <view hidden="{{!locationLoading}}">
+                <van-loading size="{{16}}" />
+            </view>
+        </view>
     </view>
+        
     <view class="submit">
         <van-button round type="info" block bind:click="editStall">修改摊位</van-button>
     </view>

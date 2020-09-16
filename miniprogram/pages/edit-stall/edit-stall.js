@@ -30,6 +30,9 @@ Page({
     minHour: 0,
     maxHour: 23,
 
+    tempCoverImg: [], // 展示用摊位封面图
+    tempDescImgs: [], // 展示用摊位描述图
+
     stallTypeList: [
       { text: "未选择", value: "未选择" },
       { text: "美食小吃", value: "美食" },
@@ -37,6 +40,8 @@ Page({
       { text: "生活用品", value: "生活" },
       { text: "创意小摊", value: "创意" },
     ],
+
+    locationLoading: false,
   },
 
   /**
@@ -54,7 +59,9 @@ Page({
   afterReadCoverImg(e) {
     const self = this;
     const { file } = e.detail;
-    console.log(e);
+    self.setData({
+      tempCoverImg: [{ url: file.path }],
+    });
     let tempFileName = Date.now() + Math.floor(Math.random() * 1000) + ".png";
     wx.cloud.uploadFile({
       cloudPath: couldImgFilePath.stallCoverImg + tempFileName,
@@ -82,6 +89,7 @@ Page({
   deleteCoverImg() {
     this.setData({
       coverImg: [],
+      tempCoverImg: [],
     });
   },
 
@@ -91,7 +99,11 @@ Page({
   afterReadDescImg(e) {
     const self = this;
     const { file } = e.detail;
-    console.log(file);
+    file.forEach((item) => {
+      self.setData({
+        tempDescImgs: [...this.data.tempDescImgs, { url: item.path }],
+      });
+    });
     const tasks = [];
     for (let item of file) {
       let tempFileName = Date.now() + Math.floor(Math.random() * 1000) + ".png";
@@ -120,10 +132,13 @@ Page({
    * 移除描述图片
    */
   deleteDescImg(event) {
-    let temp = this.data.descImgs;
-    temp.splice(event.detail.index, 1);
+    let descImgs = [...this.data.descImgs];
+    let tempDescImgs = [...this.data.tempDescImgs];
+    descImgs.splice(event.detail.index, 1);
+    tempDescImgs.splice(event.detail.index, 1);
     this.setData({
-      descImgs: temp,
+      descImgs,
+      tempDescImgs,
     });
   },
 
@@ -199,32 +214,42 @@ Page({
     });
   },
 
-  // getLocation() {
-  //   const self = this;
-  //   getUserLocation().then((res) => {
-  //     console.log("当前位置", res);
-  //     self.setData({
-  //       location: {
-  //         latitude: res.latitude,
-  //         longitude: res.longitude,
-  //       },
-  //     });
-  //     geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
-  //       (res) => {
-  //         const localData = res.data.result;
-  //         console.log("逆地址解析2", localData);
-  //         self.setData({
-  //           address: localData.address,
-  //           localCity: localData.ad_info.district || localData.ad_info.city,
-  //           businessArea: localData.address_reference.business_area
-  //             ? localData.address_reference.business_area.title
-  //             : localData.address_component.street || "",
-  //         });
-  //       }
-  //     );
-  //   });
-  // },
-
+  getLocation() {
+    const self = this;
+    self.setData({
+      locationLoading: true,
+    });
+    getUserLocation().then((res) => {
+      console.log("当前位置", res);
+      self.setData({
+        location: {
+          latitude: res.latitude,
+          longitude: res.longitude,
+        },
+      });
+      geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
+        (res) => {
+          const localData = res.data.result;
+          console.log("逆地址解析2", localData);
+          self.setData({
+            address: localData.address,
+            localCity: localData.ad_info.district || localData.ad_info.city,
+            businessArea: localData.address_reference.business_area
+              ? localData.address_reference.business_area.title
+              : localData.address_component.street || "",
+            locationLoading: false,
+          });
+          Notify({ type: "success", message: "位置获取成功",duration: 600, });
+        }
+      );
+    });
+  },
+  /**
+   * 重新定位
+   */
+  refreshLocation() {
+    this.getLocation();
+  },
   /**
    * 创建摊位
    */
@@ -239,7 +264,7 @@ Page({
     wx.cloud.callFunction({
       name: "editOneStall",
       data: {
-        operate: 'update',
+        operate: "update",
         stallId: self.data.id,
         title: self.data.title,
         label: self.data.stallType,
@@ -250,10 +275,10 @@ Page({
         },
         coverImg: self.data.coverImg,
         descImgs: self.data.descImgs,
-        // location: self.data.location,
-        // localCity: self.data.localCity,
-        // address: self.data.address,
-        // businessArea: self.data.businessArea,
+        location: self.data.location,
+        localCity: self.data.localCity,
+        address: self.data.address,
+        businessArea: self.data.businessArea,
       },
       success(res) {
         console.log(res);
@@ -270,7 +295,7 @@ Page({
       fail(err) {
         console.log(err);
         Toast.clear();
-        Notify({ type: "danger", message: "修改失败",duration: 1500, });
+        Notify({ type: "danger", message: "修改失败", duration: 1500 });
       },
     });
   },
@@ -281,47 +306,53 @@ Page({
     const self = this;
     this.setData({
       id: options.stall_id,
-    })
-    // wx.getSetting({
-    //   success: (res) => {
-    //     if (!res.authSetting["scope.userLocation"]) {
-    //       wx.authorize({
-    //         scope: "scope.userLocation",
-    //         success() {
-    //           self.getLocation();
-    //         },
-    //       });
-    //     } else {
-    //       self.getLocation();
-    //     }
-    //   },
-    //   fail: () => {
-    //     console.log("用户未授权");
-    //   },
-    // });
+    });
+    wx.getSetting({
+      success: (res) => {
+        if (!res.authSetting["scope.userLocation"]) {
+          wx.authorize({
+            scope: "scope.userLocation",
+            success() {
+              self.getLocation();
+            },
+          });
+        } else {
+          return;
+        }
+      },
+      fail: () => {
+        console.log("用户未授权");
+      },
+    });
 
     wx.cloud.callFunction({
       name: "editOneStall",
-      data:{
-        operate: 'get',
+      data: {
+        operate: "get",
         stallId: self.data.id,
       },
-      success(res){
+      success(res) {
         const resData = res.result.data;
         self.setData({
-          title:resData.title,
+          title: resData.title,
           coverImg: resData.coverImg,
           descImgs: resData.descImgs,
           stallType: resData.label,
           startTime: resData.openTime.startTime,
           closeTime: resData.openTime.closeTime,
           stallDesc: resData.desc,
-        })
+          localCity: resData.localCity,
+          businessArea: resData.businessArea,
+          location: resData.location,
+          address: resData.address,
+          tempCoverImg: resData.coverImg,
+          tempDescImgs: resData.descImgs,
+        });
       },
-      fail(err){
+      fail(err) {
         console.log(err);
-      }
-    })
+      },
+    });
   },
 
   /**

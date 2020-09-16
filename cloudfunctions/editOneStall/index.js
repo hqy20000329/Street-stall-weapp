@@ -22,6 +22,10 @@ exports.main = async (event, context) => {
         openTime: true,
         coverImg: true,
         descImgs: true,
+        localCity: true,
+        businessArea:true,
+        location: true,
+        address: true,
       })
       .get()
       .then((res) => res);
@@ -32,7 +36,10 @@ exports.main = async (event, context) => {
     const openTime = event.openTime; // 营业时间
     const coverImg = event.coverImg; // 封面图片
     const descImgs = event.descImgs; // 图片地址数组
-
+    const location = event.location; // 地理位置
+    const localCity = event.localCity;// 县 区
+    const businessArea = event.businessArea; // 商圈
+    const address = event.address; // 地址描述
     return await db
       .collection("stall_stall")
       .doc(stallId)
@@ -44,6 +51,10 @@ exports.main = async (event, context) => {
           openTime,
           coverImg,
           descImgs,
+          localCity,
+          businessArea,
+          location,
+          address,
         }
       })
       .then((res) => res);
