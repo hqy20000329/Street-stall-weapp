@@ -41,6 +41,7 @@ Component({
           url: "../create-stall/create-stall",
           fail:() => {
             Toast.fail({
+              duration: 1500,
               message:'网络异常',
               context: this
             });

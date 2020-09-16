@@ -19,7 +19,9 @@
         </view>
         <view class="right-content">
             <view class="show-open">
-                <van-tag type="danger" round size="medium" plain>{{totalStall.isOpen ? '营业中': '休息中'}}</van-tag>
+                <van-tag type="danger" round size="medium" plain>
+                    {{totalStall.isOpen ? '营业中': '休息中'}}
+                </van-tag>
             </view>
             <view class="total-stall" bindtap="changeTotalStall">
                 <text>切换当前摊位</text>
@@ -52,16 +54,16 @@
         <view class="type">优惠活动</view>
     </view>
     <view class="mid-line"></view>
-    <view class="wrapper">
+    <view class="wrapper" bind:tap="addStall">
         <van-icon name="/images/icon/merchant-create.png" size="50px" />
         <view class="type">添加摊位</view>
     </view>
 </view>
 <!-- 弹出层选择摊位 -->
-<van-popup show="{{ showPopup }}" position="bottom" custom-style="height: 40%" closeable close-icon="close" bind:close="onClose" z-index="{{9999}}">
-    
-</van-popup>
+<van-action-sheet title="选择要查看的小摊" show="{{ showPopup }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" z-index="{{9999}}" round="{{false}}" />
 <!-- 打烊按钮 -->
 <view class="close-stall">
     <van-icon name="/images/icon/merchant-close.png" size="70rpx" color="#1296db" />
 </view>
+
+<van-toast id="van-toast" />
