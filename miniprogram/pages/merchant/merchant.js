@@ -28,7 +28,7 @@ Page({
     // 摊位数量 最大3个
     num: 0,
     stallLists: [],
-    totalStall: {},
+    actions: [],
   },
 
   /**
@@ -66,18 +66,13 @@ Page({
       success(res){
         let resData = res.result;
         const stallLists = [];
-        let totalStall = {};
-
-        if(resData.length > 0){
-          totalStall = resData[0].data;
-        }
-
+        const actions = [];
         self.setData({
           num: resData.length,
         });
-        resData.forEach( ({ data }) => {
+        resData.forEach( ({ data },index) => {
           stallLists.push({
-            id: data._id,
+            _id: data._id,
             title: data.title,
             coverImg: data.coverImg,
             localCity: data.localCity,
@@ -89,17 +84,14 @@ Page({
             customNum: data.customNum,
             isOpen: data.isOpen,
             score: data.score,
+            lastOpenTime: data.lastOpenTime,
           })
-          if(data.isOpen){
-            totalStall = data
-          }
+          actions.push({ name: data.title, index });
         });
         self.setData({
           stallLists,
-          totalStall,
+          actions,
         });
-        console.log(self.data.stallLists);
-        console.log(self.data.totalStall);
       },
       fail(err){
         console.log(err);

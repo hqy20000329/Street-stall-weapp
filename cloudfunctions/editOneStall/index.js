@@ -9,7 +9,7 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
-  const openId = wxContext.OPENID; // 摊主的openid
+  // const openId = wxContext.OPENID; // 摊主的openid
   const stallId = event.stallId; // 摊位Id
   if (event.operate === "get") {
     return await db

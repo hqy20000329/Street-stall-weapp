@@ -19,7 +19,7 @@
         </view>
         <view class="right-content">
             <view class="show-open">
-                <van-tag type="danger" round size="medium" plain>
+                <van-tag type="{{totalStall.isOpen ? 'success' : 'danger'}}" round size="medium" plain>
                     {{totalStall.isOpen ? '营业中': '休息中'}}
                 </van-tag>
             </view>
@@ -61,9 +61,11 @@
 </view>
 <!-- 弹出层选择摊位 -->
 <van-action-sheet title="选择要查看的小摊" show="{{ showPopup }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" z-index="{{9999}}" round="{{false}}" />
+
 <!-- 打烊按钮 -->
-<view class="close-stall">
-    <van-icon name="/images/icon/merchant-close.png" size="70rpx" color="#1296db" />
+<view class="close-stall" bind:tap="stallOpen" hidden="{{showPopup}}">
+    <van-icon name="{{totalStall.isOpen ? '/images/icon/merchant-close.png' : '/images/icon/merchant-open.png'}}" size="70rpx" color="#1296db" />
 </view>
 
-<van-toast id="van-toast" />
+<van-toast id="van-toast" zIndex="9999"/>
+<van-dialog id="van-dialog" zIndex="9999"/>
