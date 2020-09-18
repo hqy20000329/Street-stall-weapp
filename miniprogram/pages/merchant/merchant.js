@@ -6,7 +6,7 @@ Page({
   data: {
     // 当前选中页面
     active: 0,
-
+    
     // 性能优化，各个页面是否渲染
     drawStallPage: true,
     drawMinePage: false,
@@ -24,6 +24,11 @@ Page({
         active: "../../images/icon/visitor-user-active.png",
       },
     },
+
+    // 摊位数量 最大3个
+    num: 0,
+    stallLists: [],
+    actions: [],
   },
 
   /**
@@ -38,22 +43,67 @@ Page({
   /**
    * 更改页面渲染
    */
-  changeDrawPage(pageNum){
-    if(pageNum === 0){
-      if(!this.data.drawHomePage){
-        this.setData({drawHomePage:true})
+  changeDrawPage(pageNum) {
+    if (pageNum === 0) {
+      if (!this.data.drawHomePage) {
+        this.setData({ drawHomePage: true });
       }
-    }else if(pageNum === 2){
-      if(!this.data.drawMinePage){
-        this.setData({drawMinePage:true})
+    } else if (pageNum === 2) {
+      if (!this.data.drawMinePage) {
+        this.setData({ drawMinePage: true });
       }
     }
   },
 
   /**
+   * 获取数据
+   */
+  getStallData(){
+    const self = this;
+    // 页面被展示
+    wx.cloud.callFunction({
+      name:"getMerChantStall",
+      success(res){
+        let resData = res.result;
+        const stallLists = [];
+        const actions = [];
+        self.setData({
+          num: resData.length,
+        });
+        resData.forEach( ({ data },index) => {
+          stallLists.push({
+            _id: data._id,
+            title: data.title,
+            coverImg: data.coverImg,
+            localCity: data.localCity,
+            address: data.address,
+            businessArea: data.businessArea,
+            openTime: data.openTime,
+            label: data.label,
+            hadSeenNum: data.hadSeenNum,
+            customNum: data.customNum,
+            isOpen: data.isOpen,
+            score: data.score,
+            lastOpenTime: data.lastOpenTime,
+          })
+          actions.push({ name: data.title, index });
+        });
+        self.setData({
+          stallLists,
+          actions,
+        });
+      },
+      fail(err){
+        console.log(err);
+      }
+    })
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.getStallData()
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -63,7 +113,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.getStallData();
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,0 +1,74 @@
+<!-- miniprogram/pages/create-stall/create-stall.wxml -->
+<view class="container">
+    <!-- 摊位标题 -->
+    <view class="title">
+        <van-divider contentPosition="center">输入摊位标题</van-divider>
+        <van-field value="{{ title }}" placeholder="请输入摊位标题" clearable maxlength="{{15}}" bind:change="inputTitle" />
+    </view>
+    <!-- 摊位标签 -->
+    <view class="label-wrapper">
+        <van-divider contentPosition="center">选择摊位类型</van-divider>
+        <van-dropdown-menu>
+            <van-dropdown-item value="{{ stallType }}" options="{{ stallTypeList }}" bind:change="changeStallType" />
+        </van-dropdown-menu>
+    </view>
+    <!-- 选择营业时间 -->
+    <view class="selectTime-wrapper">
+        <van-divider contentPosition="center">选择营业时间</van-divider>
+        <view class="time">
+            <text class="time-title">营业时间:</text>
+            <view class="time-button">
+                <van-button color="#7232dd" size="small" data-type="start" plain bind:click="showChooseTime">
+                    {{startTime}}
+                </van-button>
+            </view>
+            <text class="time-line">——</text>
+            <view class="time-button">
+                <van-button color="#7232dd" size="small" data-type="close" plain bind:click="showChooseTime">
+                    {{closeTime}}
+                </van-button>
+            </view>
+        </view>
+        <!-- 选择时间弹出层 -->
+        <van-popup show="{{ chooseTimePopup }}" bind:close="onCloseTimeChoose" position="bottom">
+            <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}" bind:input="onInputTime" bind:confirm="onConfirmTime" bind:cancel="onCancelTime" />
+        </van-popup>
+    </view>
+    <!-- 上传图片 -->
+    <view class="coverImg-wrapper">
+        <van-divider contentPosition="center">上传摊位宣传图片</van-divider>
+        <view class="img-wrapper">
+            <view class="coverImg">
+                <van-uploader file-list="{{ tempCoverImg }}" deletable="{{true}}" preview-size="350rpx" upload-text="上传封面图片" bind:after-read="afterReadCoverImg" max-count="1" bind:delete="deleteCoverImg" />
+            </view>
+            <view class="descImg">
+                <van-uploader file-list="{{ tempDescImgs }}" deletable="{{true}}" preview-size="168rpx" upload-text="上传图片" upload-icon="plus" multiple="{{true}}" bind:after-read="afterReadDescImg" max-count="4" bind:delete="deleteDescImg" />
+            </view>
+        </view>
+    </view>
+    <!-- 摊位描述 -->
+    <view class="descText-wrapper">
+        <van-divider contentPosition="center">请输入摊位描述</van-divider>
+        <van-field model:value="{{ stallDesc }}" type="textarea" placeholder="请输入摊位描述(详细位置,摊位介绍等)" autosize border="{{ true }}" title-width="120rpx" />
+    </view>
+    <!-- 定位 -->
+    <view class="location-wrapper">
+        <van-divider contentPosition="center">定位位置</van-divider>
+        <view class="location">
+            <view class="location-text">{{address}}</view>
+            <view hidden="{{locationLoading}}">
+            <van-icon  bind:click="refreshLocation" name="replay" />
+            </view>
+            <view hidden="{{!locationLoading}}">
+                <van-loading size="{{16}}" />
+            </view>
+        </view>
+    </view>
+    <view class="submit">
+        <van-button round type="info" block bind:click="createStall">发布摊位</van-button>
+    </view>
+    <!-- toast轻提示 -->
+    <van-toast id="van-toast" />
+    <!-- notify -->
+    <van-notify id="van-notify" />
+</view>

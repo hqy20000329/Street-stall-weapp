@@ -15,6 +15,7 @@ Page({
     drawActivityPage:false,
     drawMinePage:false,
 
+    userLocation:{}, // 用户坐标
 
     localCity: "南昌",
     // 图标src
@@ -72,17 +73,24 @@ Page({
   getLocation() {
     const self = this;
     getUserLocation().then((res) => {
-      console.log(res);
+      console.log('微信定位',res);
       geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
         (res) => {
           console.log(res);
           const localData = res.data.result;
-          console.log(localData);
+          console.log('坐标解析',localData);
           self.setData({
             localCity: localData.ad_info.district || localData.ad_info.city,
           });
         }
       );
+      translate([{latitude:res.latitude,longitude:res.longitude}]).then(res => {
+        const userLocation = {...res.data.locations[0]};
+        console.log('坐标转换',userLocation);
+        self.setData({
+          userLocation,
+        })
+      })
     });
   },
 
@@ -91,7 +99,6 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
-
     wx.getSetting({
       success: (res) => {
         if (!res.authSetting["scope.userLocation"]) {

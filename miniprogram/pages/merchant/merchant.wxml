@@ -3,14 +3,14 @@
 <!-- 商家首页 -->
 <block wx:if="{{drawStallPage}}">
   <view class="pageWrap" hidden="{{active !== 0}}" style="padding:{{navBarHeight}}px 0 50px 0">
-    <merchant-stallPage></merchant-stallPage>
+    <merchant-stallPage num="{{num}}" stallLists="{{stallLists}}"></merchant-stallPage>
   </view>
 </block>
 
 <!-- 商家管理页 -->
 <block wx:if="{{drawMinePage}}">
   <view class="pageWrap" hidden="{{active !== 2}}" style="padding:{{navBarHeight}}px 0 50px 0">
-    <merchant-minePage></merchant-minePage>
+    <merchant-minePage actions="{{actions}}" stallLists="{{stallLists}}"></merchant-minePage>
   </view>
 </block>
 
@@ -31,4 +31,5 @@
     营业信息
   </van-tabbar-item>
 </van-tabbar>
+
 

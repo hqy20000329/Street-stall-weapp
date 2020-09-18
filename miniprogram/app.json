@@ -4,7 +4,9 @@
     "pages/guide/guide",
     "pages/visitor/visitor",
     "pages/merchant/merchant",
-    "pages/visitor-stall-detail/visitor-stall-detail"
+    "pages/visitor-stall-detail/visitor-stall-detail",
+    "pages/create-stall/create-stall",
+    "pages/edit-stall/edit-stall"
   ],
   "permission": {
     "scope.userLocation": {

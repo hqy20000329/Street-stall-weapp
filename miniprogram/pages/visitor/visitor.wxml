@@ -3,7 +3,7 @@
 <!-- 游客首页 -->
 <block wx:if="{{drawHomePage}}">
   <view class="pageWrap" hidden="{{active !== 0}}" style="padding:{{navBarHeight}}px 0 50px 0">
-    <visitor-homePage homePageCity="{{localCity}}" hidden="true"></visitor-homePage>
+    <visitor-homePage userLocation="{{userLocation}}" homePageCity="{{localCity}}" hidden="true"></visitor-homePage>
   </view>
 </block>
 
