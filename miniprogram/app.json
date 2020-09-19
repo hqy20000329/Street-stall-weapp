@@ -10,7 +10,8 @@
     "pages/assess-page/assess-page",
     "pages/history-page/history-page",
     "pages/collection-page/collection-page",
-    "pages/assess-list-page/assess-list-page"
+    "pages/assess-list-page/assess-list-page",
+    "pages/merchant-assess/merchant-assess"
   ],
   "permission": {
     "scope.userLocation": {

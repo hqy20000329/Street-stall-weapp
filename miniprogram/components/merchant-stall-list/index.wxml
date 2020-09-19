@@ -1,32 +1,30 @@
-<!--components/merchant-stall-list/index.wxml-->
+<!-- components/merchant-stall-list/index.wxml -->
 <block wx:for="{{stallLists}}" wx:key="id">
-<view class="stall-wrapper">
-    <view class="stall-card">
-        <view class="title">{{item.title}}</view>
-        <view class="content-wrapper">
-            <view class="left-wrapper">
-                <view class="line-one line">
-                    <view class="business-area">{{item.localCity}} {{item.businessArea}}</view>
-                    <view class="tag">{{item.label}}</view>
+    <view class="stall-wrapper">
+        <view class="stall-card">
+            <view class="title">{{item.title}}</view>
+            <view class="content-wrapper">
+                <view class="left-wrapper">
+                    <view class="line-one line">
+                        <view class="business-area">{{item.localCity}} {{item.businessArea}}</view>
+                        <view class="tag">{{item.label}}</view>
+                    </view>
+                    <view class="line-two line">{{item.address}}</view>
+                    <view class="line-three line">
+                        时间: {{item.openTime.startTime}} - {{item.openTime.closeTime}}
+                    </view>
                 </view>
-                <view class="line-two line">
-                    {{item.address}} 
-                </view>
-                <view class="line-three line">
-                    时间: {{item.openTime.startTime}} - {{item.openTime.closeTime}}
+                <view class="right-wrapper">
+                    <van-image width="180rpx" height="180rpx" src="{{item.coverImg[0].url}}" />
                 </view>
             </view>
-            <view class="right-wrapper">
-                <van-image width="180rpx" height="180rpx" src="{{item.coverImg[0].url}}" />
-            </view>
-        </view>
-        <view class="bottom-wrapper">
-            <view class="button">开始营业</view>
-            <view class="edit" data-id="{{item._id}}" bindtap="editStall">编辑摊位信息
-                <van-icon name="arrow" size="20rpx"/>
+            <view class="bottom-wrapper">
+                <view class="button">开始营业</view>
+                <view class="edit" data-id="{{item._id}}" bindtap="editStall">
+                    编辑摊位信息
+                    <van-icon name="arrow" size="20rpx" />
+                </view>
             </view>
         </view>
     </view>
-</view>
 </block>
-

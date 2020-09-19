@@ -6,6 +6,7 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "stall-card" : "../stall-card/index",
     "van-empty": "@vant/weapp/empty/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

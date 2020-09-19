@@ -3,7 +3,7 @@ const computedBehavior = require("miniprogram-computed");
 const { minuteTimeFormat } = require("../../api/dealTime");
 const queryToString = require("../../api/dealQuery");
 import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
-
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   behaviors: [computedBehavior],
   /**
@@ -18,6 +18,11 @@ Component({
   watch: {
     'stallListData': function () {
       if (this.data.stallListData.length !== 0) {
+        Toast.loading({
+          message: '加载中...',
+          forbidClick: true,
+          context:this,
+        });
         this.getStallList();
       }
       else if(this.data.stallListData.length === 0){
@@ -57,9 +62,11 @@ Component({
           self.setData({
             stalls,
           });
+          Toast.clear();
           console.log(stalls);
         },
         fail(err) {
+          Toast.clear();
           console.log(err);
         },
       });

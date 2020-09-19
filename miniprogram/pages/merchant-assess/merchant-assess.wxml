@@ -1,0 +1,5 @@
+<!--miniprogram/pages/merchant-assess/merchant-assess.wxml-->
+<view class="merchant-assess">
+    <stall-assess assessList="{{assessList}}"></stall-assess>
+</view>
+

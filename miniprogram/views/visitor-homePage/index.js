@@ -1,6 +1,7 @@
 // components/visitor-homePage/index.js
 const { translate, distanceMatrix } = require("../../api/txMapApi");
 const computedBehavior = require("miniprogram-computed");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   behaviors: [computedBehavior],
   /**
@@ -32,6 +33,11 @@ Component({
     userLocation: function () {
       if (Object.keys(this.data.userLocation).length) {
         console.log(this.data.userLocation);
+        Toast.loading({
+          message: '加载中...',
+          forbidClick: true,
+          context:this,
+        });
         this.getStallDistance();
       }
     },
@@ -115,6 +121,7 @@ Component({
         this.setData({
           stalls,
         });
+        Toast.clear();
       });
     },
 
@@ -122,7 +129,6 @@ Component({
       this.setData({
         chooseLabel:e.detail
       })
-      console.log("选择标签",e.detail);
       const tempStalls = this.data.tempStalls;
       
       if(e.detail === "全部"){

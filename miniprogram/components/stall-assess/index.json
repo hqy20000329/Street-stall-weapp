@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-image": "@vant/weapp/image/index",
     "van-rate": "@vant/weapp/rate/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

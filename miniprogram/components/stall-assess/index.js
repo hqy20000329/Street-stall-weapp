@@ -1,5 +1,6 @@
 const {dayTimeFormat} = require('../../api/dealTime');
 const computedBehavior = require("miniprogram-computed");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   behaviors: [computedBehavior],
   /**
@@ -15,6 +16,11 @@ Component({
   watch: {
     assessList: function () {
       if (this.data.assessList.length !== 0) {
+        Toast.loading({
+          message: '加载中...',
+          forbidClick: true,
+          context:this,
+        });
         this.getAssessList('first')
       }
     },
@@ -49,9 +55,11 @@ Component({
           self.setData({
             assessData,
           })
+          Toast.clear();
           console.log('评论数据',assessData);
         },
         fail(err){
+          Toast.clear();
           console.log(err);
         }      
       })

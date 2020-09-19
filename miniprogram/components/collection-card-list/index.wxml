@@ -10,3 +10,4 @@
     <van-empty image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="暂无收藏记录" />
 </view>
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

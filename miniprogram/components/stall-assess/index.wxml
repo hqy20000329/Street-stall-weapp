@@ -22,7 +22,8 @@
         <view class="line"></view>
     </view>
 </block>
-<view class="loadMore" wx:if="{{assessData.length && assessList.length > 3 && assessData.length <= 3}}" bindtap="loadMoreAssess">加载更多...</view>
+<view class="loadMore" wx:if="{{assessData.length && assessList.length > 3 && assessData.length <= 3}}" bindtap="loadMoreAssess">点击加载更多...</view>
 <view wx:if="{{!assessData.length}}">
     <van-empty description="暂无评论" />
 </view>
+<van-toast id="van-toast" />

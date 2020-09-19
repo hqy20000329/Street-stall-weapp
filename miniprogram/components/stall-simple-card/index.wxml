@@ -14,3 +14,4 @@
     <van-empty image="search" description="暂无浏览记录" />
 </view>
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
