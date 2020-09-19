@@ -1,6 +1,8 @@
 // miniprogram/pages/vistor/vistor.js
 const { getUserLocation } = require("../../api/getUserData");
 const { translate, geocoder } = require("../../api/txMapApi");
+import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 const app = getApp();
 Page({
   /**
@@ -9,13 +11,13 @@ Page({
   data: {
     // 当前选中页面
     active: 0,
-    
-    // 性能优化，各个页面是否渲染
-    drawHomePage:true,
-    drawActivityPage:false,
-    drawMinePage:false,
 
-    userLocation:{}, // 用户坐标
+    // 性能优化，各个页面是否渲染
+    drawHomePage: true,
+    drawActivityPage: false,
+    drawMinePage: false,
+
+    userLocation: {}, // 用户坐标
 
     localCity: "南昌",
     // 图标src
@@ -42,7 +44,10 @@ Page({
    */
   onChange(event) {
     // event.detail 的值为当前选中项的索引
-
+    if (event.detail === 1) {
+      Toast("功能开发中!");
+      return;
+    }
     this.setData({ active: event.detail });
     this.changeDrawPage(this.data.active);
   },
@@ -50,22 +55,21 @@ Page({
   /**
    * 更改页面渲染
    */
-  changeDrawPage(pageNum){
-    if(pageNum === 0){
-      if(!this.data.drawHomePage){
-        this.setData({drawHomePage:true})
+  changeDrawPage(pageNum) {
+    if (pageNum === 0) {
+      if (!this.data.drawHomePage) {
+        this.setData({ drawHomePage: true });
       }
-    }else if(pageNum === 1){
-      if(!this.data.drawActivityPage){
-        this.setData({drawActivityPage:true})
+    } else if (pageNum === 1) {
+      if (!this.data.drawActivityPage) {
+        this.setData({ drawActivityPage: true });
       }
-    }else if(pageNum === 2){
-      if(!this.data.drawMinePage){
-        this.setData({drawMinePage:true})
+    } else if (pageNum === 2) {
+      if (!this.data.drawMinePage) {
+        this.setData({ drawMinePage: true });
       }
     }
   },
-
 
   /**
    * 显示用户首页左上角位置
@@ -73,24 +77,34 @@ Page({
   getLocation() {
     const self = this;
     getUserLocation().then((res) => {
-      console.log('微信定位',res);
+      console.log("微信定位", res);
       geocoder({ longitude: res.longitude, latitude: res.latitude }, 1).then(
         (res) => {
           console.log(res);
           const localData = res.data.result;
-          console.log('坐标解析',localData);
+          console.log("坐标解析", localData);
           self.setData({
             localCity: localData.ad_info.district || localData.ad_info.city,
           });
+          if (localData.address_component.city !== "南昌市") {
+            Dialog.alert({
+              title: "注意",
+              message: "当前小程序测试地区为南昌市,其他地区信息不准确",
+            }).then(() => {
+              // on close
+            });
+          }
         }
       );
-      translate([{latitude:res.latitude,longitude:res.longitude}]).then(res => {
-        const userLocation = {...res.data.locations[0]};
-        console.log('坐标转换',userLocation);
-        self.setData({
-          userLocation,
-        })
-      })
+      translate([{ latitude: res.latitude, longitude: res.longitude }]).then(
+        (res) => {
+          const userLocation = { ...res.data.locations[0] };
+          console.log("坐标转换", userLocation);
+          self.setData({
+            userLocation,
+          });
+        }
+      );
     });
   },
 

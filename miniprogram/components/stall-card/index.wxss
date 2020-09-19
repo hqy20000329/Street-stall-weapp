@@ -7,6 +7,21 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: indigo;
+    padding: 0 30rpx;
     height: 180rpx;
+    box-sizing: border-box;
+}
+
+.stall-title{
+    font-size: 34rpx;
+}
+
+.item{
+    flex: 1;
+}
+
+.stall-place{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

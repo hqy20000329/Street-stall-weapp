@@ -1,0 +1,24 @@
+/* miniprogram/pages/assess-page/assess-page.wxss */
+.assess-wrapper{
+    padding: 20rpx;
+}
+
+.textArea{
+    width: 100%;
+    height: 400rpx;
+
+}
+
+.subBtn{
+    position: fixed;
+    bottom: 60rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.rate{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+

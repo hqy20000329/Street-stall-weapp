@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"收藏记录",
+  "usingComponents": {
+    "collection-card-list" : "../../components/collection-card-list/index"
+  }
+}

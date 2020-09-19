@@ -1,0 +1,4 @@
+<!--miniprogram/pages/history-page/history-page.wxml-->
+<view class="container">
+    <stall-simple-card stallListData ="{{stallListData}}"></stall-simple-card>
+</view>

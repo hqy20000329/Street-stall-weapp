@@ -32,7 +32,7 @@ Component({
     userLocation: function () {
       if (Object.keys(this.data.userLocation).length) {
         console.log(this.data.userLocation);
-        this.getDistanceMatrix();
+        this.getStallDistance();
       }
     },
   },
@@ -43,6 +43,8 @@ Component({
     // 摊位列表数据
     stalls: [],
     txLocations: [], // 腾讯地址解析
+    tempStalls:[],//临时数据
+    chooseLabel: '全部',
   },
   /**
    * 组件的方法列表
@@ -79,8 +81,8 @@ Component({
           self.setData({
             stalls,
             txLocations,
+            tempStalls:[...stalls],
           });
-          self.getStallDistance();
         },
         fail(err) {
           console.log("获取数据出现错误", err);
@@ -96,6 +98,7 @@ Component({
         self.setData({
           txLocations,
         });
+        self.getDistanceMatrix();
       });
     },
     getDistanceMatrix() {
@@ -103,17 +106,38 @@ Component({
       let txLocations = self.data.txLocations;
       let userLocation = self.data.userLocation;
       distanceMatrix(userLocation, txLocations).then((res) => {
-        console.log(111);
         const elements = res.data.result.rows[0].elements;
         console.log("批量距离计算", elements);
         const stalls = [...self.data.stalls];
-        stalls.forEach((item,index) => {
-          item.distance = elements[index].distance;
+        stalls.forEach((item, index) => {
+          item.distance = (elements[index].distance / 1000).toFixed(1);
         });
         this.setData({
           stalls,
-        })
+        });
       });
+    },
+
+    changeType(e) {
+      this.setData({
+        chooseLabel:e.detail
+      })
+      console.log("选择标签",e.detail);
+      const tempStalls = this.data.tempStalls;
+      
+      if(e.detail === "全部"){
+        this.setData({
+          stalls:[...tempStalls],
+        })
+      } else {
+        let stalls = [];
+        stalls = tempStalls.filter(item => {
+          return item.label === e.detail;
+        })
+        this.setData({
+          stalls,
+        })
+      }
     },
   },
 

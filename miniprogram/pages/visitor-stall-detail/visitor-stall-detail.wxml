@@ -3,35 +3,41 @@
     <scroll-view >
     <view class="live-wrapper">
         <view class="live-desc">
-            <view class="live-title">现场环境</view>
-            <view class="watched">已浏览100</view>
+            <view class="live-title">摊位图片</view>
+            <view class="watched">已浏览 {{stallData.hadSeenNum}}</view>
         </view>
         <view class="live-img-list">
             <scroll-view scroll-x="true" class="live-image_scroll">
-                <block wx:for="{{stallData.imgList}}" wx:key="index">
+                <block wx:for="{{stallData.descImgs}}" wx:key="index">
                     <view class="img-container">
-                        <van-image width="100%" height="100%" fit="fill" src="{{item}}" />
+                        <van-image width="100%" height="100%" fit="fill" src="{{item.url}}" />
                     </view>
                 </block>
             </scroll-view>
         </view>
     </view>
-    <view class="stall-activity">
+    <view class="stall-desc">
+        <view class="activity-title title">摊位描述</view>
+        <view class="desc">{{stallData.desc}}</view>
+    </view>
+    <!-- <view class="stall-activity">
         <view class="activity-title title">活动列表</view>
         <view class="activity-desc"></view>
-    </view>
+    </view> -->
     <view class="stall-desc">
         <view class="stall-desc-title title">摊位介绍</view>
-        <stall-card></stall-card>
+        <stall-card stallData="{{stallData}}" distance="{{distance}}"></stall-card>
     </view>
     <view class="stall-assess">
         <view class="stall-assess-title title">用户评价</view>
-        <stall-assess></stall-assess>
+        <stall-assess assessList="{{stallData.assessList}}"></stall-assess>
     </view>
     </scroll-view>
     <van-goods-action>
-        <van-goods-action-icon icon="star-o" text="收藏" bind:click="onClickIcon" />
-        <van-goods-action-button text="获取优惠" type="warning" bind:click="onClickButton" />
-        <van-goods-action-button text="立即前往" bind:click="onClickButton" />
+        <van-goods-action-icon icon="plus" text="收藏" bind:click="collectionStall" />
+        <van-goods-action-button text="评论小摊" type="warning" bind:click="toAssessPage" />
+        <van-goods-action-button text="立即前往" bind:click="showMap" />
     </van-goods-action>
+
+    <van-toast id="van-toast" />
 </view>

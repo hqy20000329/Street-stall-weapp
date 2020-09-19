@@ -1,0 +1,17 @@
+/* components/collection-card-list/index.wxss */
+
+.right-item {
+    position: absolute;
+    top: 0;
+    height: 180rpx;
+    width: 65px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #EE0A24;
+    transform: translate3d(100%, 0, 0);
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}

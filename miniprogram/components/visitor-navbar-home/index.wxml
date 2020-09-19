@@ -4,9 +4,12 @@
         <view class="city triangle">
             {{city}}
         </view>
-        <view class="search">
+        <!-- <view class="search">
             <van-icon name="search" />
             <input class="input" placeholder="输入店铺名"></input>
+        </view> -->
+        <view class="title">
+            <text>我的小摊</text>
         </view>
     </view>
 </view>

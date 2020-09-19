@@ -1,35 +1,38 @@
-<block wx:for="{{stallList}}" wx:key="*this">
-<van-card tag="{{item.tag}}" thumb="{{item.coverImg[0].url}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="enterStall">
-    <view slot="title">
-        <view class="row-style">
-            <view class="stall-title">{{item.title}}</view>
-        </view>
-    </view>
-    <view slot="desc">
-        <view class="row-style">
-            <view class="stall-desc">
-                <text class="stall-score">{{item.score}}分</text>
-                <text class="stall-visitor">浏览{{item.visited}}</text>
-            </view>
-            <view class="stall-label">{{item.label}}</view>
-        </view>
-    </view>
-    <view slot="price-top">
-        <view class="row-style">
-            <view class="stall-open-time">
-                营业时间: {{item.startTime}} - {{item.closeTime}}
-            </view>
-            <view class="stall-distance">{{item.distance}}m</view>
-        </view>
-    </view>
-    <view slot="bottom">
-        <view class="row-style">
-            <view>{{item.localCity}} {{item.businessArea}}</view>
-            <view class="stall-special-offer">
-                <!-- <van-tag class="tag-padding" plain type="danger">{{item.promotionNum}}优惠</van-tag> -->
-                <van-tag class="tag-padding" plain type="danger">{{item.activityNum}}活动</van-tag>
+<block wx:for="{{stallList}}" wx:key="id">
+    <van-card tag="{{item.tag}}" thumb="{{item.coverImg[0].url}}" thumb-mode="fill" lazy-load="{{isLazyLoad}}" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="enterStall">
+        <view slot="title">
+            <view class="row-style">
+                <view class="stall-title">{{item.title}}</view>
             </view>
         </view>
-    </view>
-</van-card>
+        <view slot="desc">
+            <view class="row-style">
+                <view class="stall-desc">
+                    <text class="stall-score">{{item.score}}分</text>
+                    <text class="stall-visitor">浏览{{item.visited}}</text>
+                </view>
+                <view class="stall-label">{{item.label}}</view>
+            </view>
+        </view>
+        <view slot="price-top">
+            <view class="row-style">
+                <view class="stall-open-time">营业时间: {{item.startTime}} - {{item.closeTime}}</view>
+                <view class="stall-distance">{{item.distance}} km</view>
+            </view>
+        </view>
+        <view slot="bottom">
+            <view class="row-style">
+                <view>{{item.localCity}} {{item.businessArea}}</view>
+                <view class="stall-special-offer">
+                    <!-- <van-tag class="tag-padding" plain type="danger">{{item.promotionNum}}优惠</van-tag> -->
+                    <van-tag class="tag-padding" plain type="danger">
+                        {{item.activityNum}}活动
+                    </van-tag>
+                </view>
+            </view>
+        </view>
+    </van-card>
 </block>
+<view wx:if="{{!stallList.length}}">
+    <van-empty description="暂无数据" />
+</view>

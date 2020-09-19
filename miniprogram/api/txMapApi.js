@@ -99,6 +99,7 @@ const distanceMatrix = async ( fromObj, toArr, mode = 'walking', key = LHN_key) 
   const from = fromObj.lat + "," + fromObj.lng;
   let data = {};
   let to = [];
+  console.log(toArr);
   for (let item of toArr) {
     let tmp = item.lat + "," + item.lng;
     to.push(tmp);
@@ -110,7 +111,6 @@ const distanceMatrix = async ( fromObj, toArr, mode = 'walking', key = LHN_key) 
     to,
     key,
   };
-
   return await new Promise((resolve, reject) => {
     wx.request({
       url,

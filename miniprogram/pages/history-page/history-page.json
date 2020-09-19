@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"历史记录",
+  "usingComponents": {
+    "stall-simple-card" : "../../components/stall-simple-card/index"
+  }
+}

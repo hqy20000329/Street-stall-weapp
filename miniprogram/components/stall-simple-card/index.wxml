@@ -1,0 +1,16 @@
+<!-- components/stall-simple-card/index.wxml -->
+<block wx:for="{{stalls}}" wx:key="_id">
+    <view class="swipe-wrapper">
+        <van-swipe-cell data-id="{{item._id}}" data-title="{{item.title}}" data-index="{{index}}" left-width="{{ 65 }}" right-width="{{ 65 }}" bind:click="onClick" bind:close="onClose">
+            <view slot="left" class="left-item">打开</view>
+            <van-cell-group>
+                <van-cell clickable title="{{item.title}}" value="{{item.label}}" label="{{item.time}}" border="{{ false }}" />
+            </van-cell-group>
+            <view slot="right" class="right-item">删除</view>
+        </van-swipe-cell>
+    </view>
+</block>
+<view wx:if="{{!stalls.length}}">
+    <van-empty image="search" description="暂无浏览记录" />
+</view>
+<van-dialog id="van-dialog" />

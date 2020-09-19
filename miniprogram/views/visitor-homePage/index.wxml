@@ -8,7 +8,7 @@
       <!-- 轮播图组件 -->
       <my-swiper backgroundList="{{swiperList}}"></my-swiper>
       <!-- 摊位种类菜单 -->
-      <visitor-item-list></visitor-item-list>
+      <visitor-item-list bind:changeType="changeType"></visitor-item-list>
       <!-- 摊位卡片 -->
       <visitor-stall-list stallList="{{stalls}}"></visitor-stall-list>
       <!-- <view style="height:50px;width:100%;background-color:red;">底部区域</view> -->

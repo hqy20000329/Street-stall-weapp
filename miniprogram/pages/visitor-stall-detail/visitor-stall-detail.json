@@ -5,6 +5,7 @@
     "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
     "van-goods-action-button": "@vant/weapp/goods-action-button/index",
     "stall-card" : "../../components/stall-card/index",
-    "stall-assess" : "../../components/stall-assess/index"
+    "stall-assess" : "../../components/stall-assess/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

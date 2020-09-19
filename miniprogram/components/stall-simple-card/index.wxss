@@ -1,0 +1,28 @@
+/* components/stall-simple-card/index.wxss */
+.left-item {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 65px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #07C160;
+    transform: translate3d(-100%, 0, 0)
+}
+
+.right-item {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 65px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #EE0A24;
+    transform: translate3d(100%, 0, 0)
+}

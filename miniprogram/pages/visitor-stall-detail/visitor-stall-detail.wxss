@@ -1,5 +1,8 @@
 /* miniprogram/pages/visitor-stall-detail/visitor-stall-detail.wxss */
-.stall-detail {}
+.stall-detail {
+    padding-bottom: 100rpx;
+    box-sizing: border-box;
+}
 
 .live-desc {
     width: 700rpx;
@@ -52,4 +55,9 @@
     width: 100%;
     height: 300rpx;
     background-color: indianred;
+}
+
+.desc{
+    padding:0 25rpx;
+    box-sizing: border-box;
 }

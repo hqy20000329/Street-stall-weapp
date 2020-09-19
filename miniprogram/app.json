@@ -6,7 +6,11 @@
     "pages/merchant/merchant",
     "pages/visitor-stall-detail/visitor-stall-detail",
     "pages/create-stall/create-stall",
-    "pages/edit-stall/edit-stall"
+    "pages/edit-stall/edit-stall",
+    "pages/assess-page/assess-page",
+    "pages/history-page/history-page",
+    "pages/collection-page/collection-page",
+    "pages/assess-list-page/assess-list-page"
   ],
   "permission": {
     "scope.userLocation": {
@@ -19,5 +23,11 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "routePlan": {
+      "version": "1.0.8",
+      "provider": "wx50b5593e81dd937a"
+    }
+  }
 }

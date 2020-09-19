@@ -1,0 +1,5 @@
+<!--miniprogram/pages/collection-page/collection-page.wxml-->
+<view class="container">
+    <collection-card-list stallListData="{{stallListData}}"></collection-card-list>
+</view>
+
