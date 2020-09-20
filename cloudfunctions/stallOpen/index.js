@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-09-17 22:14:21
+ * @LastEditTime: 2020-09-20 15:39:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Street-stall-weapp\cloudfunctions\stallOpen\index.js
+ */
 // 云函数入口文件
 const cloud = require("wx-server-sdk");
 
@@ -39,6 +47,7 @@ exports.main = async (event, context) => {
             isOpen: true,
             score: true,
             createTime: true,
+            assessList:true,
             lastOpenTime: true,
           })
           .get()
@@ -70,6 +79,7 @@ exports.main = async (event, context) => {
             customNum: true,
             isOpen: true,
             score: true,
+            assessList:true,
             createTime: true,
             lastOpenTime: true,
           })
