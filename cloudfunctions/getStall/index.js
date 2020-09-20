@@ -8,10 +8,11 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-
+  const localCity = event.localCity;
   return await db.collection('stall_stall')
   .where({
     isOpen:true,
+    localCity,
   })
   .field({
     _id:true,

@@ -19,7 +19,7 @@ Page({
 
     userLocation: {}, // 用户坐标
 
-    localCity: "南昌",
+    localCity: "未知",
     // 图标src
     icon: {
       home: {
@@ -76,14 +76,14 @@ Page({
           self.setData({
             localCity: localData.ad_info.district || localData.ad_info.city,
           });
-          if (localData.address_component.city !== "南昌市") {
-            Dialog.alert({
-              title: "注意",
-              message: "当前小程序测试地区为南昌市,其他地区信息不准确",
-            }).then(() => {
-              // on close
-            });
-          }
+          // if (localData.address_component.city !== "南昌市") {
+          //   Dialog.alert({
+          //     title: "注意",
+          //     message: "当前小程序测试地区为南昌市,其他地区信息不准确",
+          //   }).then(() => {
+          //     // on close
+          //   });
+          // }
         }
       );
       translate([{ latitude: res.latitude, longitude: res.longitude }]).then(
