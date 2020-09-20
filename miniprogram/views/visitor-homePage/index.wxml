@@ -1,7 +1,7 @@
 <!-- components/visitor-homePage/index.wxml -->
 <view class="container">
   <!-- navBar 头部区域 -->
-  <visitor-navbar-home city="{{homePageCity}}"></visitor-navbar-home>
+  <van-nav-bar title="我的小摊" left-text="{{homePageCity}}"/>
   <!-- page页面组件 -->
   <view class="home-page">
     <scroll-view style="height:100%" scroll-y="true" enable-back-to-top="true">

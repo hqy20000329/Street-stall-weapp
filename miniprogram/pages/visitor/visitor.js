@@ -26,10 +26,6 @@ Page({
         normal: "../../images/icon/visitor-home.png",
         active: "../../images/icon/visitor-home-active.png",
       },
-      // activity: {
-      //   normal: "../../images/icon/visitor-active.png",
-      //   active: "../../images/icon/visitor-active-active.png",
-      // },
       user: {
         normal: "../../images/icon/visitor-user.png",
         active: "../../images/icon/visitor-user-active.png",
@@ -43,11 +39,7 @@ Page({
    * 切换页面事件
    */
   onChange(event) {
-    // event.detail 的值为当前选中项的索引
-    // if (event.detail === 1) {
-    //   Toast("功能开发中!");
-    //   return;
-    // }
+
     this.setData({ active: event.detail });
     this.changeDrawPage(this.data.active);
   },
@@ -61,11 +53,7 @@ Page({
         this.setData({ drawHomePage: true });
       }
     } 
-    // else if (pageNum === 1) {
-    //   if (!this.data.drawActivityPage) {
-    //     this.setData({ drawActivityPage: true });
-    //   }
-    // } 
+
     else if (pageNum === 1) {
       if (!this.data.drawMinePage) {
         this.setData({ drawMinePage: true });

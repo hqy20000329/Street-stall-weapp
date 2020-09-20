@@ -61,6 +61,7 @@ Page({
     wx.cloud.callFunction({
       name:"getMerChantStall",
       success(res){
+        console.log(res);
         let resData = res.result;
         const stallLists = [];
         const actions = [];

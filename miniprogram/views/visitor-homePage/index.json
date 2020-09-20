@@ -5,6 +5,7 @@
     "my-swiper" : "../../components/my-swiper/index",
     "visitor-item-list" : "../../components/visitor-item-list/index",
     "visitor-stall-list" : "../../components/visitor-stall-list/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
   }
 }

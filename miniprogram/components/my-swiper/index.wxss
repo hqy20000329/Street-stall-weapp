@@ -5,7 +5,7 @@
 }
 
 .swiper-container {
-    height: 12vh;
+    height: 20vh;
     display: block;
 }
 

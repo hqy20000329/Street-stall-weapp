@@ -34,7 +34,7 @@ exports.main = async (event, context) => {
   const isOpen = false; // 是否营业
   const assessList = []; // 评价数组存评价id
   const scoreList = []; //存评分id 
-  const score = 0; // 评分
+  const score = 5; // 评分
   const hadSeenNum = 0; //浏览人数
   const customNum = 0; // 接待人数
   const lastOpenTime = 0;// 上一次营业时间

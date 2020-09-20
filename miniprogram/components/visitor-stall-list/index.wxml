@@ -23,7 +23,7 @@
         <view slot="bottom">
             <view class="row-style">
                 <view>{{item.localCity}} {{item.businessArea}}</view>
-                <view class="stall-special-offer">
+                <view class="stall-special-offer" wx:if="{{item.activityNum}}">
                     <!-- <van-tag class="tag-padding" plain type="danger">{{item.promotionNum}}优惠</van-tag> -->
                     <van-tag class="tag-padding" plain type="danger">
                         {{item.activityNum}}活动

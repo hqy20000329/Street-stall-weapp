@@ -70,7 +70,7 @@ Component({
               id: item._id,
               title: item.title,
               coverImg: item.coverImg,
-              tag: item.hadSeenNum >= 1000 ? "热门" : "",
+              tag: item.hadSeenNum >= 200 ? "热门" : "",
               label: item.label,
               score: item.score,
               distance: 0,
