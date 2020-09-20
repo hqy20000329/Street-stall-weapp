@@ -1,0 +1,18 @@
+<!-- miniprogram/pages/assess-page/assess-page.wxml -->
+<view class='assess-wrapper'>
+    <textarea class="textArea" bindinput="subText" maxlength="300" placeholder="请输入评论内容..."></textarea>
+    <van-uploader file-list="{{ tempAssessImg }}" preview-size="200rpx" bind:after-read="afterRead" max-count="1" bind:delete="deleteAssessImg" />
+    <view class="rate">
+        评分:  
+        <van-rate bind:change="onChange" value="{{ rate }}" size="{{ 25 }}" allow-half color="#ee0a24" void-color="#eee" void-icon="star" bind:change="onChange" />
+    </view>
+    <view class="subBtn">
+        <van-button disabled="{{isDisable}}" type="info" round open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+            发布评论
+        </van-button>
+    </view>
+    <!-- toast轻提示 -->
+    <van-toast id="van-toast" />
+    <!-- notify -->
+    <van-notify id="van-notify" />
+</view>

@@ -1,4 +1,5 @@
 // miniprogram/pages/index/index.js
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Page({
   /**
    * 页面的初始数据
@@ -9,10 +10,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    Toast.loading({
+      message: '加载中...',
+      loadingType: 'spinner',
+      duration: 0,
+    });
     wx.cloud.callFunction({
       name: "login",
       success(res) {
         // console.log(res);
+        Toast.clear();
         let userData = res.result.data;
         if (userData.length === 1) {
           if (userData[0].actorId == 1) {
@@ -33,6 +40,16 @@ Page({
         }
       },
       fail(err) {
+        Toast({
+          type: 'fail',
+          message: '加载失败',
+          duration:1500,
+          onClose: () => {
+            wx.reLaunch({
+              url: "/pages/index/index",
+            })
+          },
+        });
       },
     });
   },

@@ -35,6 +35,7 @@ exports.main = async (event, context) => {
           isOpen: true,
           score: true,
           createTime:true,
+          assessList:true,
           lastOpenTime: true,
         }).get()
         .then(res => {

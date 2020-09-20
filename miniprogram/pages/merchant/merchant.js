@@ -16,9 +16,6 @@ Page({
         normal: "../../images/icon/merchant-stall.png",
         active: "../../images/icon/merchant-stall-active.png",
       },
-      useQRCode: {
-        normal: "../../images/icon/merchant-QRCode.png",
-      },
       manage: {
         normal: "../../images/icon/visitor-user.png",
         active: "../../images/icon/visitor-user-active.png",
@@ -48,7 +45,7 @@ Page({
       if (!this.data.drawHomePage) {
         this.setData({ drawHomePage: true });
       }
-    } else if (pageNum === 2) {
+    } else if (pageNum === 1) {
       if (!this.data.drawMinePage) {
         this.setData({ drawMinePage: true });
       }
@@ -64,6 +61,7 @@ Page({
     wx.cloud.callFunction({
       name:"getMerChantStall",
       success(res){
+        console.log(res);
         let resData = res.result;
         const stallLists = [];
         const actions = [];
@@ -84,6 +82,7 @@ Page({
             customNum: data.customNum,
             isOpen: data.isOpen,
             score: data.score,
+            assessList: data.assessList,
             lastOpenTime: data.lastOpenTime,
           })
           actions.push({ name: data.title, index });

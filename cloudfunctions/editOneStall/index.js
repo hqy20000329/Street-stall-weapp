@@ -26,6 +26,7 @@ exports.main = async (event, context) => {
         businessArea:true,
         location: true,
         address: true,
+        assessList: true,
       })
       .get()
       .then((res) => res);

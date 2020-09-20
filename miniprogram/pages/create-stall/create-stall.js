@@ -252,9 +252,37 @@ Page({
   },
 
   /**
+   * 预校验
+   */
+  preCheck() {
+    if (this.data.title === "") {
+      Toast.fail("请输入标题");
+      return false;
+    } else if (this.data.coverImg.length === 0) {
+      Toast.fail("请传入封面图片");
+      return false;
+    } else if (this.data.stallType === "未选择") {
+      Toast.fail("请选择标签");
+      return false;
+    } else if (this.startTime === "开始时间") {
+      Toast.fail("请选择开始时间");
+      return false;
+    } else if (this.startTime === "关闭时间") {
+      Toast.fail("请选择关闭时间");
+      return false;
+    } else if (this.data.descImgs.length === 0) {
+      Toast.fail("请传入描述图片");
+      return false;
+    }
+    return true;
+  },
+  /**
    * 创建摊位
    */
   createStall() {
+    if(!this.preCheck()){
+      return;
+    }
     Toast.loading({
       message: "创建中...",
       forbidClick: true,

@@ -30,7 +30,7 @@ Component({
     enterStall(e) {
       const data = queryToString({
         stall_id:e.currentTarget.dataset.id,
-        title:e.currentTarget.dataset.title
+        title:e.currentTarget.dataset.title,
       })
       wx.navigateTo({
         url: "../visitor-stall-detail/visitor-stall-detail" + data, 

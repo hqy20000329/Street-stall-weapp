@@ -10,22 +10,27 @@ Component({
         {
           img: "/images/icon/visitor-barbecue.png",
           text: "美食小铺",
+          value:"美食",
         },
         {
           img: "/images/icon/visitor-play.png",
           text: "游玩时刻",
+          value:"游玩"
         },
         {
           img: "/images/icon/visitor-life.png",
           text: "生活用品",
+          value:"生活",
         },
         {
           img: "/images/icon/visitor-create.png",
           text: "创意小摊",
+          value:"创意",
         },
         {
           img: "/images/icon/visitor-gone.png",
-          text: "打卡精品",
+          text: "全部小摊",
+          value: "全部",
         },
       ],
     },
@@ -44,5 +49,9 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {},
+  methods: {
+    changeType(e){
+      this.triggerEvent("changeType",e.target.dataset.label);
+    }
+  },
 });

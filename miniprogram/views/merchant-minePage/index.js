@@ -1,6 +1,7 @@
 // views/merchant-minePage/index.js
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 import Dialog from "../../miniprogram_npm/@vant/weapp/dialog/dialog";
+const queryToString = require('../../api/dealQuery')
 Component({
   /**
    * 组件的属性列表
@@ -76,6 +77,32 @@ Component({
           },
         });
       }
+    },
+
+    // 跳转到评论页
+    merchantAssess(e){
+      const {id, assesses} = e.currentTarget.dataset;
+      const data = queryToString({
+        id
+      })
+      wx.navigateTo({
+        url: "/pages/merchant-assess/merchant-assess" + data,
+        fail: () => {
+          Toast.fail({
+            duration: 1500,
+            message: "网络异常",
+            context: this,
+          });
+        },
+      });
+    },
+
+    // 添加活动
+    addActivity(){
+      Toast({
+        message: '功能开发中!',
+        context: this,
+      });
     },
 
     // 摊位的营业与打烊

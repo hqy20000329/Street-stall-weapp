@@ -1,5 +1,5 @@
 <!-- components/visitor-minePage/index.wxml -->
-<van-nav-bar title="我的" fixed></van-nav-bar>
+<van-nav-bar title="我的"></van-nav-bar>
 <!-- 用户信息区域 -->
 <view class="userInfo-wrap">
     <view class="userInfo">
@@ -13,11 +13,11 @@
     </view>
 </view>
 <van-cell-group>
-    <van-cell icon="clock" title="历史" size="20rpx" is-link />
-    <van-cell icon="star" title="收藏" size="20rpx" is-link />
-    <van-cell icon="coupon" title="优惠券" size="20rpx" is-link />
+    <van-cell url='/pages/history-page/history-page' icon="clock" title="历史" size="20rpx" is-link />
+    <van-cell url='/pages/collection-page/collection-page' icon="star" title="收藏" size="20rpx" is-link />
+    <van-cell url='/pages/assess-list-page/assess-list-page' icon="chat" title="评论" size="20rpx" is-link />
     <navigator class='item' open-type='exit' target="miniProgram">
-        <van-cell icon="/images/icon/login-out.png" title="退出登陆" size="20rpx" is-link bind:click="loginOut"/>
+        <van-cell icon="/images/icon/login-out.png" title="退出" size="20rpx" is-link bind:click="loginOut" />
     </navigator>
 </van-cell-group>
 <van-dialog id="van-dialog" />

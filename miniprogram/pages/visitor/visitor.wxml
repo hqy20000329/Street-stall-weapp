@@ -2,21 +2,14 @@
 
 <!-- 游客首页 -->
 <block wx:if="{{drawHomePage}}">
-  <view class="pageWrap" hidden="{{active !== 0}}" style="padding:{{navBarHeight}}px 0 50px 0">
+  <view class="pageWrap" hidden="{{active !== 0}}">
     <visitor-homePage userLocation="{{userLocation}}" homePageCity="{{localCity}}" hidden="true"></visitor-homePage>
-  </view>
-</block>
-
-<!-- 游客活动页 -->
-<block wx:if="{{drawActivityPage}}">
-  <view class="pageWrap" hidden="{{active !== 1}}" style="padding:{{navBarHeight}}px 0 50px 0">
-    <visitor-activityPage></visitor-activityPage>
   </view>
 </block>
 
 <!-- 游客我的页 -->
 <block wx:if="{{drawMinePage}}">
-  <view class="pageWrap" hidden="{{active !== 2}}" style="padding:{{navBarHeight}}px 0 50px 0">
+  <view class="pageWrap" hidden="{{active !== 1}}">
     <visitor-minePage></visitor-minePage>
   </view>
 </block>
@@ -29,13 +22,11 @@
     首页
   </van-tabbar-item>
   <van-tabbar-item>
-    <image slot="icon" src="{{icon.activity.normal}}" mode="aspectFit" style="width: 30px; height: 25px;" />
-    <image slot="icon-active" src="{{icon.activity.active}}" mode="aspectFit" style="width: 30px; height: 25px;" />
-    活动
-  </van-tabbar-item>
-  <van-tabbar-item>
     <image slot="icon" src="{{icon.user.normal}}" mode="aspectFit" style="width: 30px; height: 25px;" />
     <image slot="icon-active" src="{{icon.user.active}}" mode="aspectFit" style="width: 30px; height: 25px;" />
     我的
   </van-tabbar-item>
 </van-tabbar>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

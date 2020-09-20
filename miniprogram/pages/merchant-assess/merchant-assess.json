@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"摊位评论",
+  "usingComponents": {
+    "stall-assess" : "../../components/stall-assess/index"
+  }
+}

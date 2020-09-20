@@ -1,0 +1,4 @@
+<!--miniprogram/pages/assess-list-page/assess-list-page.wxml-->
+<view class="visit-assess">
+    <stall-assess assessList="{{assessList}}"></stall-assess>
+</view>

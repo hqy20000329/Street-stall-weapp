@@ -1,0 +1,13 @@
+<!-- components/collection-card-list/index.wxml -->
+<!-- components/stall-simple-card/index.wxml -->
+<block wx:for="{{stalls}}" wx:key="_id">
+    <van-swipe-cell data-id="{{item._id}}" data-title="{{item.title}}" data-index="{{index}}" right-width="{{ 65 }}" bind:click="onClick" bind:close="onClose">
+        <stall-card stallData="{{item}}"></stall-card>
+        <view slot="right" class="right-item">删除</view>
+    </van-swipe-cell>
+</block>
+<view wx:if="{{!stalls.length}}">
+    <van-empty image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="暂无收藏记录" />
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

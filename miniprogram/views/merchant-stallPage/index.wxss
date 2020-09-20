@@ -1,4 +1,5 @@
 /* views/merchant-stallPage/index.wxss */
+
 .add-stall{
     position: fixed;
     right: 10rpx;

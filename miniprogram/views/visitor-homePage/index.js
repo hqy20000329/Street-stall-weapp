@@ -1,20 +1,20 @@
 // components/visitor-homePage/index.js
 const { translate, distanceMatrix } = require("../../api/txMapApi");
 const computedBehavior = require("miniprogram-computed");
+import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 Component({
   behaviors: [computedBehavior],
   /**
    * 组件的属性列表
    */
   properties: {
+    homePageCity: {
+      type: String,
+      value: "未知",
+    },
     userLocation: {
       type: Object,
       value: {},
-    },
-
-    homePageCity: {
-      type: String,
-      value: "南昌",
     },
 
     // 轮播图图片
@@ -29,10 +29,20 @@ Component({
   },
   // 当子组件接受到位置时计算距离
   watch: {
+    homePageCity: function () {
+      if (this.data.homePageCity !== "未知") {
+        this.getStallListData();
+      }
+    },
     userLocation: function () {
       if (Object.keys(this.data.userLocation).length) {
         console.log(this.data.userLocation);
-        this.getDistanceMatrix();
+        Toast.loading({
+          message: "加载中...",
+          forbidClick: true,
+          context: this,
+        });
+        // this.getStallDistance();
       }
     },
   },
@@ -43,6 +53,8 @@ Component({
     // 摊位列表数据
     stalls: [],
     txLocations: [], // 腾讯地址解析
+    tempStalls: [], //临时数据
+    chooseLabel: "全部",
   },
   /**
    * 组件的方法列表
@@ -52,6 +64,9 @@ Component({
       const self = this;
       wx.cloud.callFunction({
         name: "getStall",
+        data: {
+          localCity: this.data.homePageCity,
+        },
         success(res) {
           console.log(res);
           const stalls = [];
@@ -62,7 +77,7 @@ Component({
               id: item._id,
               title: item.title,
               coverImg: item.coverImg,
-              tag: item.hadSeenNum >= 1000 ? "热门" : "",
+              tag: item.hadSeenNum >= 200 ? "热门" : "",
               label: item.label,
               score: item.score,
               distance: 0,
@@ -79,6 +94,7 @@ Component({
           self.setData({
             stalls,
             txLocations,
+            tempStalls: [...stalls],
           });
           self.getStallDistance();
         },
@@ -92,10 +108,12 @@ Component({
       let txLocations = self.data.txLocations;
       translate(txLocations).then((res) => {
         console.log("批量摊位地址解析", res);
+        if(res.data.status !== 0) return;
         txLocations = [...res.data.locations];
         self.setData({
           txLocations,
         });
+        self.getDistanceMatrix();
       });
     },
     getDistanceMatrix() {
@@ -103,24 +121,45 @@ Component({
       let txLocations = self.data.txLocations;
       let userLocation = self.data.userLocation;
       distanceMatrix(userLocation, txLocations).then((res) => {
-        console.log(111);
         const elements = res.data.result.rows[0].elements;
         console.log("批量距离计算", elements);
         const stalls = [...self.data.stalls];
-        stalls.forEach((item,index) => {
-          item.distance = elements[index].distance;
+        stalls.forEach((item, index) => {
+          item.distance = (elements[index].distance / 1000).toFixed(1);
         });
         this.setData({
           stalls,
-        })
+        });
+        Toast.clear();
       });
+    },
+
+    changeType(e) {
+      this.setData({
+        chooseLabel: e.detail,
+      });
+      const tempStalls = this.data.tempStalls;
+
+      if (e.detail === "全部") {
+        this.setData({
+          stalls: [...tempStalls],
+        });
+      } else {
+        let stalls = [];
+        stalls = tempStalls.filter((item) => {
+          return item.label === e.detail;
+        });
+        this.setData({
+          stalls,
+        });
+      }
     },
   },
 
   lifetimes: {
     attached: function () {
       // 在组件实例进入页面节点树时执行
-      this.getStallListData();
+      // this.getStallListData();
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行

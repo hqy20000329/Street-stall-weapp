@@ -25,6 +25,8 @@ exports.main = async (event, context) => {
           recordList: [],
           scoreList: [],
           assessList: [],
+          watchHistory: [],
+          collectionList: [],
           createTime: Date.now()
         },
       })

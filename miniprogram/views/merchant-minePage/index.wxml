@@ -38,18 +38,18 @@
     </view>
     <view class="mid-line"></view>
     <view class="custom-num-wrapper wrapper">
-        <view class="num">{{totalStall.customNum}}</view>
-        <view class="desc">接待数</view>
+        <view class="num">{{totalStall.assessList.length}}</view>
+        <view class="desc">评论数</view>
     </view>
 </view>
 <!-- 操作 -->
 <view class="message border-box">
-    <view class="wrapper">
+    <view class="wrapper" data-id="{{totalStall._id}}" data-assesses="{{totalStall.assessList}}" bind:tap="merchantAssess">
         <van-icon name="/images/icon/merchant-assess.png" size="50px" />
         <view class="type">用户评价</view>
     </view>
     <view class="mid-line"></view>
-    <view class="wrapper">
+    <view class="wrapper" bind:tap="addActivity">
         <van-icon name="/images/icon/merchant-activity.png" size="50px" />
         <view class="type">优惠活动</view>
     </view>

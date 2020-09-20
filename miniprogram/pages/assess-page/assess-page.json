@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText":"发布评论",
+  "usingComponents": {
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-rate": "@vant/weapp/rate/index"
+  }
+}

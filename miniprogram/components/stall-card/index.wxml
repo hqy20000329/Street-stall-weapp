@@ -1,14 +1,18 @@
-<!--components/stall-card/index.wxml-->
+<!-- components/stall-card/index.wxml -->
 <view class="stall-card">
   <view class="stall-cover">
-  <van-image width="180rpx" height="180rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+    <van-image width="180rpx" height="180rpx" lazy-load src="{{stallData.coverImg[0].url}}" />
   </view>
   <view class="stall-message">
-    <view class="stall-title">test</view>
-    <view class="stall-score">4.5</view>
-    <view class="stall-location">
-        <span class="stall-distance">600m</span> | 
-        <span class="stall-place">test location</span>
+    <view class="stall-title item">{{stallData.title}}</view>
+    <view class="stall-label item">{{stallData.label}}</view>
+    <view class="stall-score item">
+      评分:
+      <van-rate readonly allow-half value="{{ stallData.score }}" size="20rpx" gutter="0rpx" color="#ee0a24" />
+    </view>
+    <view class="stall-location item">
+      <span class="stall-place">{{stallData.address}}</span>
+      <van-icon name="location-o" />
     </view>
   </view>
 </view>
