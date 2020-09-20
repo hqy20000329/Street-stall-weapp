@@ -1,10 +1,9 @@
 <!-- components/visitor-homePage/index.wxml -->
 <view class="container">
   <!-- navBar 头部区域 -->
-  <van-nav-bar title="我的小摊" left-text="{{homePageCity}}"/>
+  <van-nav-bar fixed placeholder title="我的小摊" left-text="{{homePageCity}}"/>
   <!-- page页面组件 -->
   <view class="home-page">
-    <scroll-view style="height:100%" scroll-y="true" enable-back-to-top="true">
       <!-- 轮播图组件 -->
       <my-swiper backgroundList="{{swiperList}}"></my-swiper>
       <!-- 摊位种类菜单 -->
@@ -12,7 +11,6 @@
       <!-- 摊位卡片 -->
       <visitor-stall-list stallList="{{stalls}}"></visitor-stall-list>
       <!-- <view style="height:50px;width:100%;background-color:red;">底部区域</view> -->
-    </scroll-view>
   </view>
 </view>
 <van-toast id="van-toast" />

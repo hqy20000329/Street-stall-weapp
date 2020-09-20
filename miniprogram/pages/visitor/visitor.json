@@ -7,6 +7,6 @@
     "van-dialog": "@vant/weapp/dialog/index",
     "van-toast": "@vant/weapp/toast/index"
   },
-  "navigationStyle": "custom",
-  "disableScroll": true
+  "navigationStyle": "custom"
+
 }

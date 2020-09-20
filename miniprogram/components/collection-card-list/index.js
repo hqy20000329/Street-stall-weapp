@@ -72,8 +72,8 @@ Component({
       const self = this;
       if (e.detail === "right") {
         Dialog.confirm({
-          title: "标题",
-          message: "弹窗内容",
+          title: "确认",
+          message: "是否删除",
           asyncClose: true,
           context: this,
         })
