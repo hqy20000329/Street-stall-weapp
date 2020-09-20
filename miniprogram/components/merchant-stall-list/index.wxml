@@ -19,7 +19,7 @@
                 </view>
             </view>
             <view class="bottom-wrapper">
-                <view class="button">开始营业</view>
+                <view class="button">{{item.isOpen ? '营业中' : '暂未营业'}}</view>
                 <view class="edit" data-id="{{item._id}}" bindtap="editStall">
                     编辑摊位信息
                     <van-icon name="arrow" size="20rpx" />

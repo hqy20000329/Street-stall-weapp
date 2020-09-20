@@ -48,10 +48,11 @@ Component({
       wx.cloud.callFunction({
         name: "getStallList",
         data: {
-          stallListData: self.data.stallListData,
+          stallListData: [...self.data.stallListData],
         },
         success(res) {
           const resData = res.result;
+          console.log(res);
           const stalls = [];
           resData.forEach((item, index) => {
             item.data.time = minuteTimeFormat(
