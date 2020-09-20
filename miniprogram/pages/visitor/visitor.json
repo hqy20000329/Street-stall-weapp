@@ -3,7 +3,6 @@
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "visitor-homePage" : "../../views/visitor-homePage/index",
-    "visitor-activityPage" : "../../views/visitor-activityPage/index",
     "visitor-minePage" : "../../views/visitor-minePage/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-toast": "@vant/weapp/toast/index"
